@@ -1,0 +1,36 @@
+$black: rgb(30, 30, 30);
+$white: rgb(255, 254, 254);
+$yellow: #E8B700 ;
+$red: #b33000d9;
+$red-2: #af2f0065;
+$red-3: #e23c003e;
+$purple: #6500AF;
+$purple-2: #a21fff19;
+$purple-3: #a21fff;
+$green: #077300 ;
+$ligthGray: #4b4b4ba8;
+
+
+@font-face {
+    font-family: "font-1";
+    src: url(./assets/fonts/TiroBangla-Regular.ttf);
+}
+@font-face {
+    font-family: "font-2";
+    src: url(./assets/fonts/Nunito.zip);
+}
+
+$font-1: "font-1", sans-serif;
+$font-2 : "font-2", sans-serif;
+
+
+$shadow: rgba(43, 42, 42, 0.351);
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+text-decoration: none;
+list-style-type: none;
+}
+

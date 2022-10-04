@@ -1,0 +1,18 @@
+.left-nav-container {
+    display: block;
+    width: 10%;
+    
+    & .icons {
+        padding-left: 20px;
+        @media screen and(max-width: 550px){
+            padding-left: 0px;
+
+        }
+        & i {
+            font-size: 2rem;
+            color: $ligthGray;
+            cursor: pointer;
+            margin: 15px 10px;
+        }
+    }
+}
