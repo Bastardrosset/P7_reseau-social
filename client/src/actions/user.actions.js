@@ -22,7 +22,7 @@ export const getUser = (uid) => {
 export const uploadPicture = (data, id) => {
     return (dispatch) => {
         return axios
-        .post(`${process.env.REACT_APP_API_URL}api/auth/upload`, data)
+        .post(`${process.env.REACT_APP_API_URL}api/auth/upload/`, data)
         .then((res) => {
             return axios
             .get(`${process.env.REACT_APP_API_URL}api/auth/${id}`)
@@ -57,7 +57,7 @@ export const followUser = (followerId, idToFollow) => {
             data: { idToFollow }
         })
         .then((res) => {
-            dispatch({ type: FOLLOW_USER, playload: idToFollow})
+            dispatch({ type: FOLLOW_USER, playload: { idToFollow } })
         })
         .catch((error) => console.log(error))
     }
@@ -71,7 +71,7 @@ export const unFollowUser = (followerId, idToUnFollow) => {
             data: { idToUnFollow }
         })
         .then((res) => {
-            dispatch({ type: UNFOLLOW_USER, playload: idToUnFollow})
+            dispatch({ type: UNFOLLOW_USER, playload: { idToUnFollow }})
         })
         .catch((error) => console.log(error))
     }

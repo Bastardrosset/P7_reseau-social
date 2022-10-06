@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { followUser, unFollowUser } from '../../actions/user.actions';
 import { isEmpty } from '../Utils';
 
-const FollowHandler = ({ idToFollow, idToUnFollow, type }) => {
+const FollowHandler = ({ idToFollow, type }) => {
     const userData = useSelector((state) => state.userReducer);
     const [isFollowed, setIsFollowed] = useState(false);
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const FollowHandler = ({ idToFollow, idToUnFollow, type }) => {
     }
 
     const handleUnfollow = () => {
-        dispatch(unFollowUser(userData._id), idToUnFollow);
+        dispatch(unFollowUser(userData._id), idToFollow);
         setIsFollowed(false);
     }
 
@@ -24,26 +24,26 @@ const FollowHandler = ({ idToFollow, idToUnFollow, type }) => {
         if (!isEmpty(userData.following)){
             if (userData.following.includes(idToFollow)) {
                 setIsFollowed(true);
-            } else setIsFollowed(false);
+            } else {setIsFollowed(false)};
         }
     }, [userData, idToFollow])
 
 
   return (
-    <>
-    {isFollowed && !isEmpty(userData) && (
-      <span onClick={handleUnfollow}>
-        {type === "suggestion" && <button className='btn-unfollow'>Abonné</button>}
-        {type === "card" && <i class="far fa-check-circle"></i>}
-      </span>
-      )}
-      {isFollowed === false && !isEmpty(userData) &&  (
-        <span onClick={handleFollow}>
-            {type === "suggestion" && <button className='btn-follow'>Suivre</button>}
-            {type === "card" && <i class="far fa-check-circle"></i>}
+    <React.StrictMode>
+      {isFollowed && !isEmpty(userData) && (
+        <span onClick={handleUnfollow}>
+          {type === "suggestion" && <button className='btn-unfollow'>Abonné</button>}
+          {type === "card" && <i class="far fa-check-circle follow"></i>}
         </span>
-      )}
-    </>
+        )}
+        {isFollowed === false && !isEmpty(userData) &&  (
+          <span onClick={handleFollow}>
+              {type === "suggestion" && <button className='btn-follow'>Suivre</button>}
+              {type === "card" && <i class="far fa-check-circle unfollow"></i>}
+          </span>
+        )}
+      </React.StrictMode>
   )
 }
 

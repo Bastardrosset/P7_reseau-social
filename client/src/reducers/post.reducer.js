@@ -14,7 +14,7 @@ export default function postReducer(state = initialState, action){
                         ...post,
                         message: action.playload.message,
                     };
-                } else { return post};
+                } else { return post };
             });
             
         default:

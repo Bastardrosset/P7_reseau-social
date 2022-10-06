@@ -20,6 +20,7 @@ const UploadImg = () => {
     }
 
         return (// fomulaire pour telecharger un avatar
+        <React.StrictMode>
             <form action='' onSubmit={handlePicture} className='upload-picture'>
                 <label htmlFor='file'>Changer l'avatar</label>
                 <input type='file'
@@ -30,6 +31,7 @@ const UploadImg = () => {
                 <br/>
                 <input type='submit' value='Envoyer' />
             </form>
+        </React.StrictMode>
         )
 }
 

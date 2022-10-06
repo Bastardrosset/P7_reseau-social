@@ -9,7 +9,7 @@ export const UPDATE_POST = "UPDATE_POST"
 export const getPosts = (num) => {
     return (dispatch) => {
         return axios
-        .get(`${process.env.REACT_APP_API_URL}api/post`)
+        .get(`${process.env.REACT_APP_API_URL}api/post/`)
         .then((res) => {
             const array = res.data.slice(0, num)
             dispatch({ type: GET_POSTS, playload: array })
@@ -37,7 +37,7 @@ export const updatePost = (posterId, message) => {
             data: { message }
         })
         .then((res) => {
-            dispatch({ type: UPDATE_POST, playload: { message,posterId}});
+            dispatch({ type: UPDATE_POST, playload: { message,posterId }});
         })
         .catch((error) => console.log(error))
     }

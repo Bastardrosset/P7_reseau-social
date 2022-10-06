@@ -17,20 +17,22 @@ const Log = ( props ) => { // props importe les propriétées données dans Prof
     }
 
   return (
-    <div className='connection-form'>
-        <div className='form-container'>
-            <ul>
-                <li onClick={handleModals} // onClick button s'inscrire lance la function handlModals, verifie id auth pour s'inscrire
-                    id="auth" className={signUpModal ? 'active-btn' : null}>S'inscrire
-                </li>
-                <li onClick={handleModals} // button se connecter lance la function handlModals, verifie id login pour se connecter
-                    id="login" className={loginModal ? 'active-btn' : null}>Se connecter
-                </li>
-            </ul>
-            {signUpModal && <SignUpForm />} 
-            {loginModal && <LoginForm />}
+    <React.StrictMode>
+        <div className='connection-form'>
+            <div className='form-container'>
+                <ul>
+                    <li onClick={handleModals} // onClick button s'inscrire lance la function handlModals, verifie id auth pour s'inscrire
+                        id="auth" className={signUpModal ? 'active-btn' : null}>S'inscrire
+                    </li>
+                    <li onClick={handleModals} // button se connecter lance la function handlModals, verifie id login pour se connecter
+                        id="login" className={loginModal ? 'active-btn' : null}>Se connecter
+                    </li>
+                </ul>
+                {signUpModal && <SignUpForm />} 
+                {loginModal && <LoginForm />}
+            </div>
         </div>
-    </div>
+    </React.StrictMode>
   )
 }
 //si signUpModal alors affiche onpage le component SignUpForm

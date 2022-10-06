@@ -11,39 +11,42 @@ const NavBar = () => {
 
 
   return (
-    <nav>
-        <div className='nav-container'>
-            <div className='logo'>
-                <NavLink exact to="/">
-                <div className='logo'>
-                    <img src='/img/logo.png' alt='Logo du groupe groupomania'></img>
-                    <h1>Groupomania</h1>
-                </div>
-                </NavLink>
-            </div>
-        </div>
-            <div className='iconConnect'>
-              {uid ? (
-                <ul>
-                  <li className='welcome'>
-                    <NavLink exact to="/profil">
-                      <div className="avatar-user">
-                        <h5>Bienvenue {userData.pseudo}</h5>
-                        <img src= {'http://localhost:5000' + userData.picture} alt="Avatar user" />
-                      </div>
-                    </NavLink>
-                  </li>
-                  <Logout />
-                </ul>
-              ) : (
-                <ul>
-                  <NavLink exact to="/profil">
-                    <i class="fas fa-power-off" exact activeClasseName='off on'></i>
+    <React.StrictMode>
+      <nav>
+          <div className='nav-container'>
+              <div className='logo'>
+                  <NavLink exact to="/">
+                  <div className='logo'>
+                      <img src='/img/logo.png' alt='Logo du groupe groupomania'></img>
+                      <h1>Groupomania</h1>
+                  </div>
                   </NavLink>
-                </ul>
-              )}
-            </div>
-    </nav>
+              </div>
+          </div>
+              <div className='iconConnect'>
+                {uid ? (
+                  <ul>
+                    <li className='welcome'>
+                      <NavLink exact to="/profil">
+                        <div className="avatar-user">
+                          <h5>Bienvenue {userData.pseudo}</h5>
+                          <img src= {'http://localhost:5000' + userData.picture} alt="Avatar user" />
+                        </div>
+                      </NavLink>
+                    </li>
+                    <Logout />
+                  </ul>
+                ) : (
+                  <ul>
+                    <NavLink exact to="/profil">
+                      <i class="fas fa-power-off" exact activeClasseName='off on'></i>
+                    </NavLink>
+                  </ul>
+                )}
+              </div>
+      </nav>
+    </React.StrictMode>
+
   )
 }
 

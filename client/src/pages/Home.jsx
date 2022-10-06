@@ -10,16 +10,18 @@ import Log from '../components/Log'
 const Home = () => {
   const uid = useContext(UidContext)
   return (
-    <div className='home'>
-      <LeftNav />
-      <h2>Home</h2>
-        <div className='main'>
-          <div className="home-header">
-            { uid ? <NewPostForm /> : <Log login={true} signup={false} /> }
+    <React.StrictMode>
+      <div className='home'>
+        <LeftNav />
+        <h2>Home</h2>
+          <div className='main'>
+            <div className="home-header">
+              {uid ? <NewPostForm /> : <Log login={true} signup={false} />}
+            </div>
+            <Thread />
           </div>
-          <Thread />
-        </div>
-    </div>
+      </div>
+      </React.StrictMode>  
   )
 }
 
