@@ -19,13 +19,13 @@ const NewPostForm = () => {
   }
 
   const handlePost = async (data) => {
-    if (message || postPicture) {
+    if (message || postPicture || video) {
       const data = new FormData();
-      data.append("data", JSON.stringify ({
-        posterId : userData._id,
+      data.append('data', JSON.stringify({
+        posterId: userData._id,
         message: message
-      }
-      ))
+      }))
+
       data.append('file', postPicture);
       
 
@@ -73,7 +73,7 @@ const NewPostForm = () => {
           </div>
           <NavLink exact to="/profil" >
           <div className="user-info">
-            <img src={'http://localhost:5000' + userData.picture} alt="Avatar user"/>
+            <img src={userData.picture} alt="Avatar user"/>
           </div>
           </NavLink>
           <div className="post-form">
@@ -86,7 +86,7 @@ const NewPostForm = () => {
               {message || postPicture || video.length > 20 ? (
                 <li className='card-container'>
                   <div className="card-left">
-                    <img src={'http://localhost:5000' + userData.picture} alt='Avatar utilisateur' />
+                    <img src={userData.picture} alt='Avatar utilisateur' />
                   </div>
                   <div className="card-right">
                     <div className="card-header">
@@ -97,30 +97,14 @@ const NewPostForm = () => {
                     <div className="content">
                       <p>{message}</p>
                       <img src={postPicture} alt=''/>
-                      {video && (
-                        <iframe
-                          src={video}
-                          frameBorder="0"
-                          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                          allowFullScreen
-                          title={video}>
-                        </iframe>
-                      )}
                     </div>
                   </div>
                 </li>
               ) : null}
             <div className="footer-form">
               <div className='icon'>
-                {isEmpty(video) && (
-                  <>
-                    <i class="far fa-image"></i>
-                    <input type="file" id="file-upload" name="file" accept="jpg, png, jpeg" onChange={(e) => handlePicture(e)}/>
-                  </>
-                )}
-                {video && (
-                  <button onClick={() => setVideo('')}>Supprimer vidéo</button>
-                )}
+                  <i class="far fa-image"></i>
+                  <input type="file" id="file-upload" name="file" accept="jpg, png, jpeg" onChange={(e) => handlePicture(e)}/>
               </div>
               <div className="btn-send">
                 {message || postPicture || video.length > 20 ? (

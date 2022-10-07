@@ -30,7 +30,7 @@ const NavBar = () => {
                       <NavLink exact to="/profil">
                         <div className="avatar-user">
                           <h5>Bienvenue {userData.pseudo}</h5>
-                          <img src= {'http://localhost:5000' + userData.picture} alt="Avatar user" />
+                          <img src= {userData.picture} alt="Avatar user" />
                         </div>
                       </NavLink>
                     </li>

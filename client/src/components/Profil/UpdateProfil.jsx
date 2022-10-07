@@ -30,7 +30,7 @@ const UpdateProfil = () => {
         <div className='update-container'>
           <div className='user-picture'>
             <h3>Photo de profil</h3>
-              <img src={'http://localhost:5000' + userData.picture} alt='user avatar' />
+              <img src={userData.picture} alt='user avatar' />
             <UploadImg />
           </div>
           <div className='biographie-part'>
@@ -73,7 +73,7 @@ const UpdateProfil = () => {
                       if (user._id === userData.following[i]) {
                         return (
                           <li key={user._id}>
-                            <img src={'http://localhost:5000' + user.picture} alt="Avatar de l'utilisateur qui nous suit" />
+                            <img src={user.picture} alt="Avatar de l'utilisateur qui nous suit" />
                             <h4>{user.pseudo}</h4>
                             <div className='follow-btn'>
                               <FollowHandler idToFollow={user._id} type={"suggestion"} className="checked"/>
@@ -104,7 +104,7 @@ const UpdateProfil = () => {
                       if (user._id === userData.followers[i]) {
                         return (
                           <li key={user._id}>
-                            <img src={'http://localhost:5000' + user.picture} alt="Avatar de l'utilisateur que l'on veux suivre" />
+                            <img src={user.picture} alt="Avatar de l'utilisateur que l'on veux suivre" />
                             <h4>{user.pseudo}</h4>
                             <div className='follow-btn'>
                               <FollowHandler idToFollow={user._id} type={"suggestion"} className="check"/>

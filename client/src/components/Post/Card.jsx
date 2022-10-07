@@ -87,7 +87,7 @@ const Card = ({ post }) => {// prop post de Thread
                   )}
 
                   {post.picture && (
-                    <img src={'http://localhost:5000' + post.picture} alt="Photo du post" className='card-picture' />
+                    <img src={ post.picture } alt="Photo du post" className='card-picture' />
                   )}
                   {post.video && (
                     <iframe
@@ -112,7 +112,6 @@ const Card = ({ post }) => {// prop post de Thread
                       <i class="far fa-comment"></i>
                       <span>{post.comments.length}</span>
                     </div>
-                    <h6>Like Button</h6>
                     <i class="far fa-thumbs-up"></i>
                   </div>
               </div>
