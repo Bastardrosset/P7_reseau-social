@@ -9,7 +9,6 @@ const NewPostForm = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState('');
   const [postPicture, setPostPicture] = useState(null);
-  const [video, setVideo] = useState('');
   const [file, setFile] = useState();
   const userData = useSelector((state) => state.userReducer)
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ const NewPostForm = () => {
   }
 
   const handlePost = async (data) => {
-    if (message || postPicture || video) {
+    if (message || postPicture) {
       const data = new FormData();
       data.append('data', JSON.stringify({
         posterId: userData._id,
@@ -40,7 +39,6 @@ const NewPostForm = () => {
   const cancelPost = () => {
     setMessage('');
     setPostPicture('');
-    setVideo('');
     setFile('');
   }
 
@@ -51,7 +49,7 @@ const NewPostForm = () => {
   
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userData, message, video])
+  }, [userData, message])
 
 
   return (
@@ -83,7 +81,7 @@ const NewPostForm = () => {
               placeholder='Quoi de neuf ?'
               onChange={(e) => setMessage(e.target.value)}
               value={message} />
-              {message || postPicture || video.length > 20 ? (
+              {message || postPicture ? (
                 <li className='card-container'>
                   <div className="card-left">
                     <img src={userData.picture} alt='Avatar utilisateur' />
@@ -107,7 +105,7 @@ const NewPostForm = () => {
                   <input type="file" id="file-upload" name="file" accept="jpg, png, jpeg" onChange={(e) => handlePicture(e)}/>
               </div>
               <div className="btn-send">
-                {message || postPicture || video.length > 20 ? (
+                {message || postPicture ? (
                 <button className='cancel' onClick={cancelPost}>Annuler message</button>) : null}
                 <button className='send' onClick={handlePost}>Envoyer</button>
               </div>

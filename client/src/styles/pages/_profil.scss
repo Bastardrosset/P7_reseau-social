@@ -305,26 +305,26 @@
   align-items: center;
   margin-top: 30px;
 
-    & label {
+    & label, input {
       font-size: 1.1rem;
       margin-bottom: 5px;
+      width: 100%;
+      font-size: 1rem;
+      padding: 5px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: .2s ease;
+      border: 1px solid $red;
+      background-color: $red-3;
+        &:hover {
+          background-color: $red-2;
+          color: $white;
+          font-weight: bold;
+          border: none;
+        }
     }
-  & input[type="submit"],
   & input[type="file"] {
-    width: 100%;
-    font-size: 1rem;
-    padding: 5px 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: .2s ease;
-    border: 1px solid $red;
-    background-color: $red-3;
-      &:hover {
-        background-color: $red-2;
-        color: $white;
-        font-weight: bold;
-        border: none;
-      }
+    display: none;
   }
 }
 

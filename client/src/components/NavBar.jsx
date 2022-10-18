@@ -39,7 +39,7 @@ const NavBar = () => {
                 ) : (
                   <ul>
                     <NavLink exact to="/profil">
-                      <i class="fas fa-power-off" exact activeClasseName='off on'></i>
+                      <i class="fas fa-power-off"></i>
                     </NavLink>
                   </ul>
                 )}
