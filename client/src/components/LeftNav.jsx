@@ -7,15 +7,15 @@ const LeftNav = () => {
     <React.StrictMode>
       <div className='left-nav-container'>
         <div className='icons'>
-          <NavLink to="/" exact activeClasseName='active-Left-Nav'>
+          <NavLink to="/">
               <i class="fas fa-home-alt"></i>
           </NavLink>
           <br/>
-          <NavLink to="/trending" exact activeClasseName='active-Left-Nav'>
+          <NavLink to="/trending">
               <i class="fas fa-rss"></i>
           </NavLink>
           <br/>
-          <NavLink to="/profil" exact activeClasseName='active-Left-Nav'>
+          <NavLink to="/profil">
               <i class="fas fa-user"></i>
           </NavLink>
           <br/>

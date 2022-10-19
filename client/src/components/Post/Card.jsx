@@ -2,18 +2,21 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { dateParser, isEmpty } from '../Utils';
 import FollowHandler from '../Profil/FollowHandler';
-import { getPosts } from '../../actions/post.actions';
-
+import { updatePost } from '../../actions/post.actions';
+import CardComments from './CardComments';
+import DeleteCard from './DeleteCard'
 
 const Card = ({ post }) => {// prop post de Thread
+
     const [isLoading, setIsLoading] = useState(true);
     const [isUpdated, setIsUpdated] = useState(false);
     const [textUpdate, setTextUpdate] = useState(null);
+    const [showComments, setShowComments] = useState(false);
     const userData = useSelector((state) => state.userReducer);
     const usersData = useSelector((state) => state.usersReducer)
     const dispatch = useDispatch();
 
-    const updatePost = () => {
+    const updateItem = () => {
       if (textUpdate) {
         dispatch(updatePost(post._id, textUpdate))
       }
@@ -35,17 +38,17 @@ const Card = ({ post }) => {// prop post de Thread
                 <img src= {
                   !isEmpty(usersData[0]) &&
                       usersData
-                      .map((data) => {
-                        console.log(data)
-                        console.log(usersData)
-                      if (data._id === post.posterId) {
-                        return data.picture
+                      .map((user) => {
+                        // console.log(user)
+                        // console.log(usersData)
+                      if (user._id === post.posterId) {
+                        return user.picture
                       } 
                       else {
                         return null
                       }
                     })
-                  .join(' ')
+                  .join('')
                 }
                 alt="Avatar de l'utilisateur" />
               </div>
@@ -74,46 +77,44 @@ const Card = ({ post }) => {// prop post de Thread
                   {isUpdated && (
                     <div className="update-post">
                       <textarea 
-                      className='update-post-area'
-                      defaultValue={post.message}
-                      onChange={(e) => setTextUpdate(e.target.value)}
+                        className='update-post-area'
+                        defaultValue={post.message}
+                        onChange={(e) => setTextUpdate(e.target.value)}
                       />
                       <div className="button-container">
-                        <button className='btn' onClick={updatePost}>
-                          Valider modification
+                        <button 
+                          className='btn' 
+                          onClick={updateItem}>Valider modification
                         </button>
                       </div>
                     </div>
                   )}
 
                   {post.picture && (
-                    <img src={ post.picture } alt="Photo du post" className='card-picture' />
-                  )}
-                  {post.video && (
-                    <iframe
-                      title={post._id}  
-                      width="500"
-                      height="300"
-                      src={post.video}
-                      frameBorder="0"
-                      fallow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen>
-                    </iframe>
+                    <img 
+                      src={ post.picture } 
+                      alt="Photo du post" 
+                      className='card-picture' />
                   )}
                   {userData._id === post.posterId && (
                     <div className="button-container">
                       <div onClick={() => setIsUpdated(!isUpdated)}>
                       <i class="far fa-edit"></i>
                       </div>
+                      <DeleteCard id={post._id} />
                     </div>
                   )}
                   <div className="card-footer">
                     <div className="comment-icon">
-                      <i class="far fa-comment"></i>
+                      <i 
+                        class="far fa-comment" 
+                        onClick={() => setShowComments(!showComments)}>
+                      </i>
                       <span>{post.comments.length}</span>
                     </div>
                     <i class="far fa-thumbs-up"></i>
                   </div>
+                  {showComments && <CardComments post={post} />}
               </div>
               </>
           )}
