@@ -13,8 +13,8 @@ const Home = () => {
     <React.StrictMode>
       <div className='home'>
         <LeftNav />
-        <h2>Home</h2>
           <div className='main'>
+            <h2>Home</h2>
             <div className="home-header">
               {uid ? <NewPostForm /> : <Log login={true} signup={false} />}
             </div>

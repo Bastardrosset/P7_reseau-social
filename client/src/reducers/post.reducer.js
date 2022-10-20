@@ -1,4 +1,4 @@
-import { GET_POSTS, UPDATE_POST } from "../actions/post.actions";
+import { GET_POSTS, LIKE_POST, UPDATE_POST } from "../actions/post.actions";
 
 const initialState = {};
 
@@ -16,7 +16,15 @@ export default function postReducer(state = initialState, action){
                     };
                 } else { return post };
             });
-            
+        case LIKE_POST:
+               return state.map((post) => {
+                if (post._id === action.playload.postId) {
+                    return {
+                        ...post,
+                        likers: [action.playload.userId, ...post.likers]
+                    }
+                }
+               });
         default:
             return state;
     }

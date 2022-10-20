@@ -18,11 +18,11 @@ const CardComments = ({ post }) => {
             .then(() => dispatch(getPosts))
             .then(() => setText(''))
         }
-
     }
 
   return (
     <div className='comments-container'>
+        <hr/>
         {post.comments.map((comment) => {
             return (
                 <div 
@@ -53,8 +53,8 @@ const CardComments = ({ post }) => {
                                 <div className='pseudo'>
                                     <h3>{comment.commenterPseudo}</h3>
                                     <span>{timestampParser(comment.timestamp)}</span>
-                                    <p>{comment.text}</p>
                                 </div>
+                                    <p>{comment.text}</p>
                             </div>
                         </div>
                 </div>

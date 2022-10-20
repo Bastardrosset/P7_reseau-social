@@ -1,16 +1,8 @@
 .profil-page {
     margin: 80px auto 0;
-    max-width: 1200px;
-
-    & .log-container {
-      position: relative;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 60% 40%;
-  
-        @media screen and(max-width: 885px) {
-          grid-template-columns: 1fr;
-        }
+    
+    & .left-nav-container {
+      flex: 1;
     }
     & .success{
       position: absolute;
@@ -18,65 +10,6 @@
       left: 22%;
       color: $green;
       font-weight: bold;
-    }
-  
-    & .connection-form {
-      border: none;
-      background: $purple-2;
-      min-width: 490px;
-      width: 90%;
-      text-align: center;
-      margin: 0 auto;
-      padding: 20px;
-      border-radius: 20px;
-  
-      & .form-container {
-        display: grid;
-        grid-template-columns: 30% 70%;
-
-        & ul {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          & li {
-            cursor: pointer;
-            border-radius: 20px;
-            padding: 10px 20px;
-            transition: .2s ease;
-
-          }
-          & .active-btn {
-            background: $red-2;
-  
-            &:hover {
-              background: $red;
-            }
-          }
-          li:not(.active-btn) {
-            &:hover {
-              transform: translateX(3px);
-            }
-          }
-          & #login {
-            position: relative;
-              @media screen and(max-width: 550px) {
-                margin-bottom: 30px;
-    
-                &:after {
-                  content: "";
-                  position: absolute;
-                  bottom: -10px;
-                  left: 50%;
-                  transform: translateX(-50%);
-                  width: 80%;
-                  height: 1px;
-                  background: $red-2;
-                }
-              }
-          }
-        }
-      }
     }
   }
 
@@ -101,9 +34,9 @@
 
   & .update-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 90%;
       @media screen and(max-width: 550px) {
         width: 100%;
         margin-left: 5%;
@@ -112,9 +45,9 @@
 
     & .user-picture {
       width: 40%;
+      margin-left: 20px;
       height: auto;
       display: flex;
-      justify-content: center;
       align-items: center;
         @media screen and(max-width: 550px) {
           width: 90%;
@@ -148,16 +81,13 @@
             }
 
             & p {
-              border: 1px solid $red;
               padding: 10px;
               margin: 10px 0px;
               border-radius: 10px;
-              position: relative;
-              display: inline-block;
               width: 100%;
-              background-color: $red-3;
+              box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
               font-family: $font-2;
-              font-size: 1rem;
+              font-size: 1.1rem;
             }
 
             & textarea[type="text"]{
@@ -173,17 +103,18 @@
               width: 80%;
               font-size: 1rem;
               padding: 5px 10px;
+              border: none;
               border-radius: 10px;
               cursor: pointer;
               transition: .2s ease;
-              border: 1px solid $red;
+              box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
               background-color: $red-3;
               margin-bottom: 20px;
 
                 &:hover {
-                  background-color: $red-2;
+                  background-color: $red;
                   color: $white;
-                  font-weight: bold;
+                  font-weight: 500;
                   border: none;
                 }
             }
@@ -194,7 +125,7 @@
 
         & h5 {
           font-size: 1.2rem;
-          border-bottom: 1px solid $purple-3;
+          border-bottom: 1px solid $red;
         }
     }
 
@@ -203,7 +134,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: $purple-2;
+      box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
       padding: 20px;
       height: 100%;
       border-radius: 25px;
@@ -264,7 +195,7 @@
         & .modal-users-followers {
           & ul {
             display: flex;
-          flex-direction: row;
+            flex-direction: row;
           & img {
             width: 50px;
             height: 50px;
@@ -288,9 +219,6 @@
                 font-weight: bold;
               }
           }
-          & .follow-btn {
-            
-          }
           }
         }
   }
@@ -312,14 +240,15 @@
       font-size: 1rem;
       padding: 5px 10px;
       border-radius: 10px;
+      border: none;
       cursor: pointer;
       transition: .2s ease;
-      border: 1px solid $red;
+      box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
       background-color: $red-3;
         &:hover {
-          background-color: $red-2;
+          background-color: $red;
           color: $white;
-          font-weight: bold;
+          font-weight: 500;
           border: none;
         }
     }
@@ -330,61 +259,100 @@
 
 
 /************ * Form de connection * ************/
-#login-form {
-    & #email,
-      #password,
-      input[type="submit"] {
-        font-family: $font-1;
-        border-radius: 20px;
-        padding: 10px 20px;
-        border: none;
-        outline: none;
-    }
-    
-    & input {
-      margin-top: 5px;
-    }
+.log-container {
+  display: flex;
+  & .connection-form {
+    flex: 6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    & input[type="submit"]{
-      cursor: pointer;
-      margin-top: 30px;
-      color: $red-2;
-      transition: .2s ease;
-
-        &:hover {
-          color: $white;
-          font-weight: bold;
+    & .form-container {
+      display: flex;
+      flex: 6;
+      & ul {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+        & #auth, #login {
+          text-align: center;
+          box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+          margin-top: 30px;
           background-color: $red-3;
+          padding: 10px 20px;
+          border-radius: 10px;
+          transition: .2s ease;
+          cursor: pointer;
+
+          &:hover {
+              background-color: $red;
+              color: $white;
+              font-weight: 500;
+            }
+          }
+      }
+
+      & #login-form, #sign-up-form {
+
+        & label {
+          border-bottom: 0.5px solid $ligthGray;
+          padding-bottom: 2px;
         }
+          & #email,
+            #password,
+            input[type="submit"],
+            input[type="text"],
+            #password-conf {
+              font-family: $font-1;
+              font-size: 1.1rem;
+              border-radius: 10px;
+              padding: 10px 20px;
+              border: none;
+              outline: none;
+              width: 95%;
+              box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+      
+          }
+          
+          & input {
+            margin-top: 15px;
+          }
+      
+          & input[type="submit"]{
+            cursor: pointer;
+            margin-top: 30px;
+            color: $red;
+            background-color: $red-3;
+            transition: .2s ease;
+
+              &:hover {
+                color: $white;
+                font-weight: 500;
+                background-color: $red;
+              }
+          }
+          & input[type="checkbox"] {
+            margin-right: 3px;
+          }
+      }
     }
 }
-
-#sign-up-form {
-    & #pseudo,
-      #email,
-      #password,
-      #password-conf,
-      input[type="submit"] {
-        font-family: $font-1;
-        border-radius: 20px;
-        padding: 10px 20px;
-        border: none;
-        outline: none;
+  & .img-container {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & h2 {
+      text-align: center;
+      margin-bottom: 100px;
     }
-
-    & input[type="submit"] {
-      cursor: pointer;
-      margin-top: 25px;
-      color: $red-2;
-      transition: .2s ease;
-        &:hover {
-          color: $white;
-          font-weight: bold;
-          background-color: $red-3;
-        }
+    & img {
+      width: 300px;
     }
-
-    & input[type="checkbox"] {
-      margin-right: 3px;
-    }
+  }
 }
+
+

@@ -5,6 +5,7 @@ import FollowHandler from '../Profil/FollowHandler';
 import { updatePost } from '../../actions/post.actions';
 import CardComments from './CardComments';
 import DeleteCard from './DeleteCard'
+import LikeButton from './LikeButton';
 
 const Card = ({ post }) => {// prop post de Thread
 
@@ -39,8 +40,6 @@ const Card = ({ post }) => {// prop post de Thread
                   !isEmpty(usersData[0]) &&
                       usersData
                       .map((user) => {
-                        // console.log(user)
-                        // console.log(usersData)
                       if (user._id === post.posterId) {
                         return user.picture
                       } 
@@ -99,7 +98,7 @@ const Card = ({ post }) => {// prop post de Thread
                   {userData._id === post.posterId && (
                     <div className="button-container">
                       <div onClick={() => setIsUpdated(!isUpdated)}>
-                      <i class="far fa-edit"></i>
+                      <i className="far fa-edit"></i>
                       </div>
                       <DeleteCard id={post._id} />
                     </div>
@@ -107,12 +106,12 @@ const Card = ({ post }) => {// prop post de Thread
                   <div className="card-footer">
                     <div className="comment-icon">
                       <i 
-                        class="far fa-comment" 
+                        className="far fa-comment" 
                         onClick={() => setShowComments(!showComments)}>
                       </i>
                       <span>{post.comments.length}</span>
                     </div>
-                    <i class="far fa-thumbs-up"></i>
+                    <LikeButton post={post}/>
                   </div>
                   {showComments && <CardComments post={post} />}
               </div>

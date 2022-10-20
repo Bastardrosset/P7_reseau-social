@@ -8,15 +8,11 @@ const LeftNav = () => {
       <div className='left-nav-container'>
         <div className='icons'>
           <NavLink to="/">
-              <i class="fas fa-home-alt"></i>
-          </NavLink>
-          <br/>
-          <NavLink to="/trending">
-              <i class="fas fa-rss"></i>
+              <i className="fas fa-home-alt"></i>
           </NavLink>
           <br/>
           <NavLink to="/profil">
-              <i class="fas fa-user"></i>
+              <i className="fas fa-user"></i>
           </NavLink>
           <br/>
         </div>

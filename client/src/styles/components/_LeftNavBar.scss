@@ -1,9 +1,11 @@
 .left-nav-container {
-    display: block;
-    width: 10%;
+    position: relative;
     
     & .icons {
-        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
         @media screen and(max-width: 550px){
             padding-left: 0px;
 
@@ -12,7 +14,17 @@
             font-size: 2rem;
             color: $ligthGray;
             cursor: pointer;
-            margin: 15px 10px;
+            margin-top: 20px;
         }
+    }
+    &::after {
+        position: absolute;
+        content: "";
+        background-color: $ligthGray;
+        width: 80%;
+        height: 1px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        margin-top: 20px;
     }
 }

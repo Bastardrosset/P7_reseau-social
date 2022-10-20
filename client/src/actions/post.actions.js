@@ -9,6 +9,9 @@ export const DELETE_POST = "DELETE_POST";
 
 //Comments
 export const ADD_COMMENT = "ADD_COMMENT";
+export const LIKE_POST = "LIKE_POST";
+export const UNLIKE_POST = "UNLIKE_POST";
+
 
 
 export const getPosts = (num) => {
@@ -28,7 +31,7 @@ export const addPost = (data) => {
         return axios
         .post(`${process.env.REACT_APP_API_URL}api/post/`, data)
         .then((res) => {
-            res.status(200);
+            dispatch({ type: ADD_POST, playload: {data}})
         })
         .catch((error) => console.log(error))
     }
@@ -72,5 +75,19 @@ export const addComment = (postId, commenterId, text, commenterPseudo) => {
             dispatch({ type: ADD_COMMENT, playload: { postId }})
         })
         .catch((error) => console.log(error))
+    }
 }
+
+export const likePost = (postId, userId) => {
+    return (dispatch) => {
+        return axios ({
+            method: 'patch',
+            url:`${process.env.REACT_APP_API_URL}api/post/like-post/`+ postId,
+            data: {id: userId}
+        })
+        .then((res) => {
+            dispatch({ type: LIKE_POST, playload: {postId, userId} })
+        })
+        .catch ((error) => console.log(error))
+    }
 }

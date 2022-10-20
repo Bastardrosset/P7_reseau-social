@@ -69,7 +69,7 @@ const NewPostForm = () => {
               Abonné{userData.followers && userData.followers.length > 1 ? "s" : null}
             </p>
           </div>
-          <NavLink exact to="/profil" >
+          <NavLink exact='true' to="/profil" >
           <div className="user-info">
             <img src={userData.picture} alt="Avatar user"/>
           </div>
@@ -101,7 +101,7 @@ const NewPostForm = () => {
               ) : null}
             <div className="footer-form">
               <div className='icon'>
-                  <i class="far fa-image"></i>
+                  <i className="far fa-image"></i>
                   <input type="file" id="file-upload" name="file" accept="jpg, png, jpeg" onChange={(e) => handlePicture(e)}/>
               </div>
               <div className="btn-send">

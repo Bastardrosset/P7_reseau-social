@@ -34,13 +34,13 @@ const FollowHandler = ({ idToFollow, type }) => {
       {isFollowed && !isEmpty(userData) && (
         <span onClick={handleUnfollow}>
           {type === "suggestion" && <button className='btn-unfollow'>Abonné</button>}
-          {type === "card" && <i class="far fa-check-circle follow"></i>}
+          {type === "card" && <i className="far fa-check-circle follow"></i>}
         </span>
         )}
         {isFollowed === false && !isEmpty(userData) &&  (
           <span onClick={handleFollow}>
               {type === "suggestion" && <button className='btn-follow'>Suivre</button>}
-              {type === "card" && <i class="far fa-check-circle unfollow"></i>}
+              {type === "card" && <i className="far fa-check-circle unfollow"></i>}
           </span>
         )}
       </React.StrictMode>

@@ -1,39 +1,41 @@
 .home {
     position: relative;
-    display: grid;
-    grid-template-columns: 10% 90%;
-    grid-template-rows: 1fr;
-    width: 100%;
-    margin-top: 100px;
+    display: flex;
+    margin-top: 80px;
 
+        & .left-nav-container {
+            flex: 1;
+        }
         & h2 {
-            grid-area: 1 / 2 / 2 / 3; 
-            text-align: center;
-            transform: translate(-5%, -60px);
             font-family: $font-1;
             font-size: 2rem;
+            text-align: center;
         }
 
         & .main {
-             grid-area: 1 / 2 / 2 / 3; 
+            flex: 10;
             & .home-header {
                 position: relative;
-                width: 60%;
+                width: 90%;
                 margin-left: 30px;
-                border: 1px solid $red;
+                margin-bottom: 40px;
                 min-height: 150px;
-                background-color: $red-3;
                 border-radius: 20px;
+                box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+
+                &::after {
+                    margin-top: 30px;
+                    position: absolute;
+                    content: "";
+                    width: 90%;
+                    height: 0.5px;
+                    background-color: $ligthGray;
+                    margin-left: 50%;
+                    transform: translateX(-50%) rotate(180deg);
+                }
                 & .connection-form{
                     & .form-container {
-                        position: relative;
-                        margin: 0 auto;
-                        display: grid;
-                        grid-template-columns: 40% 60%;
                         
-                            @media screen and(max-width: 885px) {
-                                grid-template-columns: 1fr;
-                            }
                             & ul {
                                 display: flex;
                                 flex-direction: column;
@@ -44,13 +46,7 @@
                                     border-radius: 20px;
                                     padding: 10px 20px;
                                     transition: .2s ease;
-                                }
-                                & .active-btn {
-                                    background: $red-2;
-                            
-                                    &:hover {
-                                        background: $red;
-                                    }
+                                
                                 }
                                 li:not(.active-btn) {
                                     &:hover {
@@ -90,11 +86,12 @@
                 }
 
                 & .post-container {
-                width: 100%;
-                height: auto;
-                resize: none;
-                position: relative;
-
+                    position: relative;
+                    width: 100%;
+                    height: auto;
+                    resize: none;
+                    position: relative;
+                    
                     & .data {
                         position: absolute;
                         right: 10px;
@@ -113,12 +110,13 @@
                         margin: 10px 0px 20px 0px;
                         
                         & img {
-                            width: 30px;
-                            height: 30px;
-                            border-radius: 10px;
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
                         }
                     }
                     & .post-form {
+                        position: relative;
                         width: 100%;
                         display: flex;
                         flex-direction: column;
@@ -127,32 +125,33 @@
                         & textarea {
                             width: 90%;
                             height: 60px;
-                            border: 0.5px solid $red;
                             border-radius: 20px;
+                            border: none;
                             padding: 5px 20px;
                             margin-bottom: 15px;
-                            margin-top: 50px;
+                            margin-top: 60px;
                             line-height: 18px;
-                            font-family: $font-2;
                             font-size: 1.2rem;
                             resize: none;
-                            background-color: $red-3;
-                        }
+                            box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+                                &:focus {
+                                    outline: none;
+                                }
+                            }
 
                             & .card-container {
-                                width: 100%;
-                                margin: 10px;
                                 position: relative;
+                                width: 100%;
                                 
                                 & .card-left {
                                     position: absolute;
                                     left: 0;
-                                    & img {
-                                        width: 26px;
-                                        height: 26px;
-                                        border-radius: 10px;
-                                        margin-left: 10px;
-                                    }
+                                    width: 100%;
+                                        & img {
+                                            width: 30px;
+                                            height: 30px;
+                                            border-radius: 50%;
+                                        }
                                 }
 
                                 & .card-right {
@@ -237,13 +236,12 @@
                                     &:hover {
                                         background-color: $red-2;
                                         color: $white;
-                                        font-weight: 700;
                                 }}
                                     & #file-upload{
-                                        width: 27px;
-                                        height: 28px;
+                                        width: 30px;
+                                        height: 40px;
                                         margin-right: 30px;
-                                        transform: translate(-27px, -5px);
+                                        transform: translate(-35px, -15px);
                                         opacity: 0;
                                         cursor: pointer;
                                     }
@@ -257,15 +255,17 @@
                                 padding: 5px 20px;
                                 margin-bottom: 5px;
                                 border-radius: 10px;
-                                border: 0.5px solid $red;
                                 background-color: $red-3;
                                 font-weight: 500;
                                 transition: .2s ease;
+                                border: none;
+                                box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+
                                 cursor: pointer;
                                 &:hover {
-                                    background-color: $red-2;
+                                    background-color: $red;
                                     color: $white;
-                                    font-weight: 700;
+                                    font-weight: 500;
                                 }
                             }
                             & .send {
@@ -281,29 +281,37 @@
                 margin-left: 10px;
                     & ul {
                         margin: 20px;
-                        width: 60%;
+                        width: 90%;
                         position: relative;
                         border-radius: 20px;
-                        border: 1px solid $red;
-                        background-color: $red-3;
                         display: flex;
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
 
                         & .card-container {
-                            box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.33);
+                            box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.161);
                             border-radius: 15px;
-                            width: 95%;
+                            width: 100%;
                             padding: 10px;
                             margin: 10px;
                             background-color: $white;
                             position: relative;
+                            display: flex;
+
 
                             & .card-img-user {
+                                position: absolute;
                                 width: 40px;
                                 height: 40px;
                                 margin-bottom: 20px;
+                                margin-right: 15px;
+                                    & img {
+                                        width: 40px;
+                                        height: 40px;
+                                        object-fit: cover;
+                                        border-radius: 50%;
+                                    }
                             }
                             & .card-post {
                                 width: 100%;
@@ -311,22 +319,31 @@
                                 margin-bottom: 10px;
                                     & .card-post-header {
                                         width: 100%;
+                                        height: 40px;
                                         display: flex;
-                                        margin-bottom: 10px;
-                                        justify-content: space-between;
+
+                                        margin-bottom: 30px;
                                         & .pseudo {
+                                            margin-left: 60px;
+                                            width: 100%;
                                             flex: 8;
                                             
                                             & h3 {
                                                 width: 30%;
                                                 font-size: 1.2rem;
-                                                line-height: 24px;color: $purple;
+                                                line-height: 24px;
+                                                color: $ligthGray;
                                             }
                                         }
                                         & span {
-                                            flex: 4;
+                                            position: absolute;
+                                            right: 30px;
                                             color: $red;
                                         }
+                                    }
+                                    & p {
+                                        line-height: 20px;
+                                        font-size: 1.2rem;
                                     }
                                     & .card-picture {
                                         display: flex;
@@ -341,7 +358,7 @@
                                         position: absolute;
                                         display: flex;
                                         top: 35px;
-                                        right: 10px;
+                                        right: 30px;
                                             & button {
                                                 margin-right: 20px;
                                             }
@@ -365,12 +382,16 @@
                                                 width: 100%;
                                                 min-height: 70px;
                                                 border-radius: 15px;
-                                                background-color: $red-2;
+                                                border: none;
+                                                box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.33); background-color: $red-4;
                                                 font-size: 14px;
                                                 &:focus {
                                                     background-color: $red-3;
                                                     outline: none;
-                                                    font-weight: bold;
+                                                    font-weight: 500;
+                                                }
+                                                &:focus > .button-container > .fa-edit {
+                                                    display: none;
                                                 }
                                             }
                                         & .btn {
@@ -388,13 +409,96 @@
                                     & .comments-container {
                                         margin: 5px auto;
                                         width: 90%;
-                                        box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.33);
-                                        background-color: $red-2;
-                                        border-radius: 5px;
+                                        border-radius: 10px;
+                                        & hr {
+                                            transform: translateY(-5px);
+                                            margin-top: 10px;
+                                            margin-bottom: 20px;
+                                        }
+                                        
+                                            & .comment-container {
+                                                box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.33);
+                                                border-radius: 10px;
+                                                margin-bottom: 5px;
+                                                position: relative;
+
+                                                & .left-part {
+                                                    position: absolute;
+                                                    & img {
+                                                        width: 30px;
+                                                        height: 30px;
+                                                        border-radius: 50%;
+                                                        object-fit: cover;
+                                                    }
+                                                }
+                                                
+                                                & .right-part {
+                                                    margin-bottom: 30px;
+                                                    & .pseudo {
+                                                        padding-top: 10px;
+                                                         margin: 15px 10px 15px 25px;
+                                                        display: flex;
+                                                        justify-content: space-between;
+                                                            & h3 {
+                                                                font-size: 1rem;
+                                                                padding-left: 10px;
+                                                                color: $ligthGray;
+
+                                                            }
+                                                            & span {
+                                                                font-size: 0.8rem;
+                                                                padding-right: 5px;
+                                                                color: $red;
+                                                            }
+                                                    }
+                                                }
+                                                & .client {
+                                                    background-color: $red-4;
+                                                }
+                                                & p {
+                                                    padding-left: 5px;
+                                                    padding-bottom: 15px;
+                                                    font-size: 1.1rem;
+                                                }
+                                            }
+
+                                            & .comment-form {
+                                                display: flex;
+                                                flex-direction: column;
+                                                align-items: center;
+                                                    & input[type="text"] {
+                                                        width: 90%;
+                                                        min-height: 40px;
+                                                        border: none;
+                                                        border-radius: 10px;
+                                                        padding-left: 5px;
+                                                        box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.33);
+
+
+                                                        &:focus {
+                                                            outline: none;
+                                                        }
+                                                    }
+                                                    & input[type='submit'] {
+                                                        padding: 5px 10px;
+                                                        border-radius: 10px;
+                                                        border: none;
+                                                        background-color: $red-3;
+                                                        font-size: 14px;
+                                                        margin-bottom: 10px;
+                                                        transition: .2s ease;
+                                                        box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+
+                                                        &:hover {
+                                                            background-color: $red;
+                                                            outline: none;
+                                                            font-weight: 500;
+                                                            color: $white;
+                                                        }
+                                                    }
+                                            }
                                     }
-                                    & .client {
-                                        background-color: $red-4;
-                                    }
+                                    
                             & .card-footer {
                                 display: flex;
                                 justify-content: space-around;
@@ -406,6 +510,9 @@
                                 }
                                 & .fa-thumbs-up {
                                     cursor: pointer;
+                                }
+                                & .likeBlue {
+                                    color: $blue;
                                 }
                             }
                             }

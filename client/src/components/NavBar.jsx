@@ -15,7 +15,7 @@ const NavBar = () => {
       <nav>
           <div className='nav-container'>
               <div className='logo'>
-                  <NavLink exact to="/">
+                  <NavLink exact='true' to="/">
                   <div className='logo'>
                       <img src='/img/logo.png' alt='Logo du groupe groupomania'></img>
                       <h1>Groupomania</h1>
@@ -27,7 +27,7 @@ const NavBar = () => {
                 {uid ? (
                   <ul>
                     <li className='welcome'>
-                      <NavLink exact to="/profil">
+                      <NavLink exact='true' to="/profil">
                         <div className="avatar-user">
                           <h5>Bienvenue {userData.pseudo}</h5>
                           <img src= {userData.picture} alt="Avatar user" />
@@ -38,8 +38,8 @@ const NavBar = () => {
                   </ul>
                 ) : (
                   <ul>
-                    <NavLink exact to="/profil">
-                      <i class="fas fa-power-off"></i>
+                    <NavLink exact='true' to="/profil">
+                      <i className="fas fa-power-off"></i>
                     </NavLink>
                   </ul>
                 )}

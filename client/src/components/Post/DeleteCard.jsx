@@ -16,11 +16,10 @@ const DeleteCard = (props) => {
             if (window.confirm("Voulez vous supprimer ce post ?")) {
                 window.location.reload()
                 deletecard()
-                // window.location.reload();
             }
         }}
     >
-        <i class="fas fa-trash-alt"></i>
+        <i className="fas fa-trash-alt"></i>
     </div>
   )
 }
