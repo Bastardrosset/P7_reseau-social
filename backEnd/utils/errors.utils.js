@@ -43,9 +43,5 @@ exports.uploadErrors = (err) => {
         errors.format = "Format de la photo invalide !";
     }
 
-    if (err.message.includes('Max size')){
-        errors.maxSize = "Le fichier dépasse 500ko !"
-    }
-
     return errors
 }

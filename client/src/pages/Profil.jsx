@@ -14,9 +14,9 @@ const Profil = () => {
       ) : (
       <div className='log-container'>
         <Log login={false} signup={true}/>
-        <div className='img-container'>
+        <div className='log-container-title'>
           <h2>Le reseau du groupe</h2>
-          <img src='/img/Computador.svg' alt="Illustration d'un pc et de la planète terre"/>
+          <span className="log-desc">Connect with friend and the world around you on Groupomania.</span>
         </div>
       </div>
       )}

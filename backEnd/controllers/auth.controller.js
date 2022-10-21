@@ -25,7 +25,7 @@ module.exports.signUp = async (req, res) => {
     } catch (err) {
         // console.log(err)
         const errors = signUpErrors(err);
-        res.status(400).send({ errors });
+        res.status(400).json({ errors });
     }
 }
 
@@ -40,12 +40,12 @@ module.exports.login = async (req, res) => {
         res.status(200).json({ user: user._id })
     } catch (err) {
         const errors = loginErrors(err);
-        res.status(401).send({ errors });
+        res.status(401).json({ errors });
     }
  };
 
  // Function déconnection
- exports.logout = (req, res) => {
+ module.exports.logout = (req, res) => {
     res.cookie('jwt', '', { maxAge: 1 });// maxAge passe à 1 miniseconde
     res.redirect('/');
  }
