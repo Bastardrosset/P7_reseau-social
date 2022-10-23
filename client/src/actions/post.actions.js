@@ -91,3 +91,16 @@ export const likePost = (postId, userId) => {
         .catch ((error) => console.log(error))
     }
 }
+export const unlikePost = (postId, userId) => {
+    return (dispatch) => {
+        return axios ({
+            method: 'patch',
+            url:`${process.env.REACT_APP_API_URL}api/post/unlike-post/`+ postId,
+            data: {id: userId}
+        })
+        .then((res) => {
+            dispatch({ type: UNLIKE_POST, playload: {postId, userId} })
+        })
+        .catch ((error) => console.log(error))
+    }
+}

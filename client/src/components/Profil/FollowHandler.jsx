@@ -15,7 +15,7 @@ const FollowHandler = ({ idToFollow, type }) => {
     }
 
     const handleUnfollow = () => {
-        dispatch(unFollowUser(userData._id), idToFollow);
+        dispatch(unFollowUser(userData._id, idToFollow));
         setIsFollowed(false);
     }
 

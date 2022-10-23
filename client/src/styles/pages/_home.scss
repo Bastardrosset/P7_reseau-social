@@ -550,18 +550,28 @@
                                     & i {
                                     cursor: pointer;
                                     margin-right: 5px;
+                                    font-size: 1.2rem;
                                     }
                                 }
-                                & .fa-thumbs-up {
+                                & .like-container {
+
+                                    & .fa-thumbs-up {
+                                    font-size: 1.2rem;
                                     cursor: pointer;
-                                }
-                                & .likeBlue {
-                                    color: $blue;
-                                }
+                                    }
+                                    & .likeBlue {
+                                        color: $blue;
+                                    }
+                                    & span {
+                                        margin-left: 5px;
+                                        color: $ligthGray;
+                                        font-size: 1rem;
+                                    }
+                                }  
                             }
-                            }
-                        }    
-                    }
+                        }
+                    }    
+                }
             }
         }
     }

@@ -1,4 +1,4 @@
-import { GET_POSTS, LIKE_POST, UPDATE_POST } from "../actions/post.actions";
+import { GET_POSTS, LIKE_POST, UNLIKE_POST, UPDATE_POST } from "../actions/post.actions";
 
 const initialState = {};
 
@@ -16,6 +16,7 @@ export default function postReducer(state = initialState, action){
                     };
                 } else { return post };
             });
+
         case LIKE_POST:
                return state.map((post) => {
                 if (post._id === action.playload.postId) {
@@ -24,7 +25,19 @@ export default function postReducer(state = initialState, action){
                         likers: [action.playload.userId, ...post.likers]
                     }
                 }
+                return post;
                });
+               
+        case UNLIKE_POST:
+            return state.map((post) => {
+                if (post._id === action.playload.postId) {
+                    return {
+                        ...post,
+                        likers: post.likers.filter((id) => id !== action.playload.userId)
+                    }
+                }
+                return post;
+            })
         default:
             return state;
     }

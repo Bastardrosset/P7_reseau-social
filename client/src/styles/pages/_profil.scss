@@ -18,6 +18,7 @@
   }
 
 .profil-container {
+  flex: 10;
   display: flex;
   justify-content: space-between;
   margin-top: 140px;
@@ -184,7 +185,6 @@
               }
           }
         }
-
         & h4,
         & h3 {
           color: $white;
@@ -255,6 +255,7 @@
           border: none;
         }
     }
+
   & input[type="file"] {
     display: none;
   }
@@ -270,6 +271,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 25px;
+
   & .connection-form {
     flex: 6;
     display: flex;
@@ -345,6 +347,7 @@
                 background-color: $red;
               }
           }
+
           & input[type="checkbox"] {
             margin-right: 3px;
           }
@@ -357,6 +360,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     & h2 {
       text-align: center;
       font-size: 1.5rem;

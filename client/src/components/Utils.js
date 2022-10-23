@@ -28,7 +28,7 @@ export const timestampParser = (num) => {
 
     return date.toString();
     
-}
+};
 //Fonction permet de verifier si un champ est rempli
 export const isEmpty = (value) => {
     return (
@@ -36,5 +36,5 @@ export const isEmpty = (value) => {
         value === null ||
         (typeof value === "object" && Object.keys(value).length === 0) ||
         (typeof value === "string" && value.trim().length === 0)
-    )
-}
+    );
+};
