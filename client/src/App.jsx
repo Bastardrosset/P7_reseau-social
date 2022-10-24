@@ -18,15 +18,14 @@ const App = () => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res)
-        setUid(res.data)
+        setUid(res.data.userId)
       })
       .catch((error) => console.log("No token"))
     }
     fetchToken();
-if (uid) {
-  dispatch(getUser(uid))
-}
+      if (uid) {
+        dispatch(getUser(uid))
+      }
 
   }, [uid, dispatch]);//[] relance uid a chaque changement sur useEffect
 

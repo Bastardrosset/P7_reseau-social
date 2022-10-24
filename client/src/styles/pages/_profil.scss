@@ -7,6 +7,9 @@
     
     & .left-nav-container {
       flex: 1;
+      @media screen and (max-width: 767px) {
+        transform: translateY(-120px);
+    }
     }
     & .success{
       position: absolute;
@@ -23,6 +26,9 @@
   justify-content: space-between;
   margin-top: 140px;
   position: relative;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+}
 
   & .title-profil-page {
     width: 100%;
@@ -44,8 +50,8 @@
     width: 90%;
       @media screen and(max-width: 550px) {
         width: 100%;
-        margin-left: 5%;
         flex-direction: column;
+        transform: translateY(-50px);
       }
 
     & .user-picture {
@@ -57,6 +63,7 @@
         @media screen and(max-width: 550px) {
           width: 90%;
           flex-direction: column;
+          margin-left: 0px;
         }
         & img {
           width: 100px;
@@ -263,6 +270,13 @@
 
 
 /************ * Form de connection * ************/
+.email-error,
+.password-error,
+.error {
+  color: $red;
+  margin-top: 3px;
+}
+
 .log-container {
   position: relative;
   width: 90%;
@@ -271,17 +285,33 @@
   justify-content: center;
   align-items: center;
   border-radius: 25px;
+    @media screen and (max-width: 767px) {
+      display: flex;
+      flex-direction: column-reverse;
+  }
 
   & .connection-form {
-    flex: 6;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
     & .form-container {
+      width: 100%;
       display: flex;
-      flex: 5;
       padding: 20px;
+      @media screen and (max-width: 912px) {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      @media screen and (max-width: 767px) {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
 
       & ul {
         flex: 1;
@@ -309,7 +339,9 @@
       }
 
       & #login-form, #sign-up-form {
-
+        @media screen and (max-width: 912px) {
+          padding-top: 30px;
+        }
         & label {
           border-bottom: 0.5px solid $ligthGray;
           padding-bottom: 2px;
@@ -360,6 +392,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+      @media screen and (max-width: 767px) {
+      width: 100%;
+    }
 
     & h2 {
       text-align: center;
@@ -371,6 +406,9 @@
       text-align: center;
       font-size: 1.2rem;
       column-rule: $ligthGray;
+        @media screen and (max-width: 412px) {
+          margin: 10px;
+        }
     }
   }
 }

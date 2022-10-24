@@ -11,6 +11,9 @@ const LoginForm = () => {
     e.preventDefault();
     const emailError = document.querySelector('.email-error');
     const passwordError = document.querySelector('.password-error');
+    
+    emailError.textContent = 'Email inconnu ou mal saisie!'
+    passwordError.textContent = "Le mot de passe ne correspond pas à celui enregistré !";
 
     axios({
       method: "post",
@@ -21,11 +24,11 @@ const LoginForm = () => {
         password,
       },
     })
-    .then((response) => {
-      console.log(response)
-      if (response.data.errors) {
-        emailError.innerHTML = response.data.errors.email;
-        passwordError.innerHTML = response.data.errors.password;
+    .then((res) => {
+      // console.log(res)
+      if (res.data.errors) {
+        emailError.innerHTML = res.data.errors.email;
+        passwordError.innerHTML = res.data.errors.password;
       } else {
         window.location = '/';
       }
@@ -42,7 +45,8 @@ const LoginForm = () => {
           type="text" 
           name="email" 
           id="email" 
-          onChange={(e) => setEmail(e.target.value)} value={email} />
+          onChange={(e) => setEmail(e.target.value)} 
+          value={email}/>
       <div className='email-error'></div>
       <br/>
 

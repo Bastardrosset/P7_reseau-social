@@ -66,7 +66,7 @@ const Card = ({ post }) => {// prop post de Thread
                         })
                       }
                     </h3>
-                    {post.posterId !== userData._id && (
+                    {(post.posterId !== userData._id || userData.isAdmin) && (
                       <FollowHandler idToFollow={post.posterId} type={"card"} />)}
                   </div>
                   <span>{dateParser(post.createdAt)}</span>
@@ -95,7 +95,7 @@ const Card = ({ post }) => {// prop post de Thread
                       alt="Photo du post" 
                       className='card-picture' />
                   )}
-                  {userData._id === post.posterId && (
+                  {(userData._id === post.posterId || userData.isAdmin) && (
                     <div className="button-container">
                       <div onClick={() => setIsUpdated(!isUpdated)}>
                       <i className="far fa-edit"></i>

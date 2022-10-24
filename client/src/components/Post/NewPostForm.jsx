@@ -49,7 +49,7 @@ const NewPostForm = () => {
   
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userData, message])
+  }, [userData, message, file])
 
 
   return (

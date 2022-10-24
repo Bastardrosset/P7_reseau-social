@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-
 const SignUpForm = () => {
   const [formSbmit, setFormSubmit] = useState(false);
   const [pseudo, setPseudo] = useState('');// déclaration des variables d'état
@@ -17,18 +16,17 @@ const SignUpForm = () => {
     const emailError = document.querySelector('.email.error');
     const passwordError = document.querySelector('.password.error');
     const passwordConfError = document.querySelector('.passwordConf.error');
-    passwordConfError.style.color = 'red'
     const termsError = document.querySelector('.terms.error');
 
     passwordConfError.innerHTML = "";
     termsError.innerHTML = "";
 
     if(password !== controlPassword || !terms.checked) {
-        if(password !== controlPassword) {
-        passwordConfError.innerHTML = "Les mots de passe ne correspondent pas !";
+        if (password !== controlPassword) {
+        passwordConfError.textContent = "Les mots de passe ne correspondent pas !";
       }
 
-        if(!terms.checked) {
+        if (!terms.checked) {
         termsError.innerHTML = "Veuillez valider les conditions générales !";
         termsError.style.color = 'red';
         termsError.style.marginTop = '10px';
@@ -46,15 +44,18 @@ const SignUpForm = () => {
       .then((res) => {
         if (res.data.errors) {
           pseudoError.innerHTML = res.data.errors.pseudo;
+  
           emailError.innerHTML = res.data.errors.email;
+
           passwordError.innerHTML = res.data.errors.password;
+
         } else {
           setFormSubmit(true);
         }
       })
       .catch((error) => console.log(error))
-    }
-  }
+    };
+  };
   return (
     <>
     {formSbmit ? (

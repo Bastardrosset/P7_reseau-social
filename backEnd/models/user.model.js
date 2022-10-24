@@ -36,14 +36,12 @@ const UserSchema = mongoose.Schema(
             type: String,
             max: 1000,
         },
-        followers: {
-            type: [String],
-        },
-        following: {
-            type: [String],
-        },
         likes: {
             type: [String],
+        }, 
+        isAdmin: {
+            type: Boolean,
+            default: false,
         }
     },
 

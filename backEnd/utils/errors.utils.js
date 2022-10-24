@@ -2,7 +2,11 @@
 
 // Gestion des erreurs création de compte
 module.exports.signUpErrors = (error) => {
-    let errors = { pseudo: '', email: '', password: '' }
+    let errors = {
+        pseudo: '',
+        email: '',
+        password: ''
+    }
 
     if (error.message.includes('pseudo')) {
         return errors.pseudo = "Pseudo incorrect ou déja pris !";
@@ -20,8 +24,11 @@ module.exports.signUpErrors = (error) => {
 };
 
 // Gestion des erreurs identification
-exports.loginErrors = (error) => {
-    let errors = { email: '', password: '' };
+module.exports.loginErrors = (error) => {
+    let errors = {
+        email: '',
+        password: ''
+    };
 
     if (error.message.includes('email')) {
         errors.email = "Email inconnu !";
@@ -33,15 +40,3 @@ exports.loginErrors = (error) => {
 
     return errors
 };
-
-
-//Gestion des erreurs images
-exports.uploadErrors = (err) => {
-    let errors = { format: '', maxSize: '' };
-
-    if (err.message.includes('Photo invalide')){
-        errors.format = "Format de la photo invalide !";
-    }
-
-    return errors
-}

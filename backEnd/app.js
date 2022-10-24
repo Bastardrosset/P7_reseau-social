@@ -33,7 +33,7 @@ app.use(cookieParser());// analyseur permet de décoder les cookies
 app.get('*', checkUser);// check dans toutes les routes si le token correspond a son id
 
 app.get('/jwtid', requireAuth, (req, res) => {// jwtId déclanche requireAuth  
-  res.status(200).send(res.locals.user._id)// renvoie d'ID utilisateur connecté
+  res.status(200).send({userId: res.locals.user._id, role: res.locals.user.role})// renvoie d'ID utilisateur connecté
 })
 
 
