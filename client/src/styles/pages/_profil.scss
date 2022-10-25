@@ -202,27 +202,9 @@
           font-size: 1.4rem;
         }
 
-        & .modal-users-following,
-        & .modal-users-followers {
-          & ul {
-            display: flex;
-            flex-direction: row;
-          & img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-          }
           & li {
             margin: 0px 20px;
           }
-          & .btn-unfollow,
-          & .btn-follow {
-            margin-top: 5px;
-            padding: 5px 10px;
-            border-radius: 10px;
-            border: none;
-            transition: .2s ease;
             
               &:hover {
                 background-color: $red-2;
@@ -230,11 +212,8 @@
                 font-weight: bold;
               }
           }
-          }
-        }
-  }
 }
-
+      
 
 
 //formulaire Upload-Picture user_profil

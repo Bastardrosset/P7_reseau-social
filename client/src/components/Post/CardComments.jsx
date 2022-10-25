@@ -15,7 +15,7 @@ const CardComments = ({ post }) => {
         e.preventDefault();
 
         if (text) {
-            dispatch(addComment(post._id, userData._id, text, userData.pseudo))
+            dispatch(addComment(post._id, userData._id, text, userData.pseudo, userData.isAdmin))
             .then(() => dispatch(getPosts))
             .then(() => setText(''))
         }
@@ -62,7 +62,7 @@ const CardComments = ({ post }) => {
                 </div>
                 )
         })}
-        {userData._id && (
+        {(userData._id || userData.isAdmin) && (
             <form action='' onSubmit={handleComment} className='comment-form'>
                 <input 
                     type="text" 

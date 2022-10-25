@@ -39,17 +39,7 @@ PUT     http://localhost:5000/api/auth/"NumberIdUser"
 //Supprimer un user
 DELETE     http://localhost:5000/api/auth/"NumberIdUser"
 
-//Suivre un user
-PATCH       http://localhost:5000/api/auth/follow/"idWeWantToFollow"
-    { 
-        "idToFollow": "followerId"
-    }
 
-//Ne plus suivre un user
-PATCH       http://localhost:5000/api/auth/unfollow/"idWeWantToFollow"
-    { 
-        "idToUnFollow": "followerId"
-    }
 
 //********** Router POSTMAN post **********//
 
