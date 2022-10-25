@@ -40,6 +40,68 @@
                 & .connection-form{
                     & .form-container {
                         display: flex;
+                        flex-direction: row;
+                        & #login-form,
+                        & #sign-up-form {
+                            flex: 6;
+                            padding: 20px;
+                            margin-left: 20px;
+
+                            & label {
+                                border-bottom: 0.5px solid $ligthGray;
+                                padding-bottom: 1px;
+                              }
+                              & input[type="submit"],
+                                input[type="text"],
+                                input[type="password"] {
+                                font-family: $font-1;
+                                margin-top: 5px;
+                                font-size: 1.1rem;
+                                border-radius: 10px;
+                                padding: 10px 20px;
+                                border: none;
+                                outline: none;
+                                width: 95%;
+                                box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);   
+                                }
+                                & input[type="submit"]{
+                                    cursor: pointer;
+                                    margin-top: 30px;
+                                    color: $red;
+                                    background-color: $red-3;
+                                    transition: .2s ease;
+                        
+                                      &:hover {
+                                        color: $white;
+                                        font-weight: 500;
+                                        background-color: $red;
+                                      }
+                                  }
+                                  & .form-input,
+                                  & .login-form-input {
+                                    & input {
+                                        margin-bottom: 5px;
+                                    }
+                                    & span {
+                                        line-height: 30px;
+                                        color: $red;
+                                        display: none;
+                                    }
+                                    & input:invalid[focused="true"]{
+                                        border: 1px solid $red;
+                                    }
+                                    & input:invalid[focused="true"] ~ span {
+                                        display: block;
+                                    }
+                                  }
+                        }
+                        & .success{
+                            position: absolute;
+                            bottom: 70px;
+                            left: 22%;
+                            color: $green;
+                            font-weight: bold;
+                          }
                             & ul {
                                 flex: 6;
                                 display: flex;
@@ -83,52 +145,7 @@
                                     }
                                 }}
                             }
-                        & #login-form,
-                        & #sign-up-form {
-                            flex: 6;
-                            padding: 20px;
-                            margin-left: 20px;
-
-                            & label {
-                                border-bottom: 0.5px solid $ligthGray;
-                                padding-bottom: 1px;
-                              }
-                              & #email,
-                                #password,
-                                input[type="submit"],
-                                input[type="text"],
-                                #password-conf {
-                                font-family: $font-1;
-                                margin-top: 5px;
-                                font-size: 1.1rem;
-                                border-radius: 10px;
-                                padding: 10px 20px;
-                                border: none;
-                                outline: none;
-                                width: 95%;
-                                box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);   
-                                }
-                                & input[type="submit"]{
-                                    cursor: pointer;
-                                    margin-top: 30px;
-                                    color: $red;
-                                    background-color: $red-3;
-                                    transition: .2s ease;
                         
-                                      &:hover {
-                                        color: $white;
-                                        font-weight: 500;
-                                        background-color: $red;
-                                      }
-                                  }
-                        }
-                        & .success{
-                            position: absolute;
-                            bottom: 70px;
-                            left: 22%;
-                            color: $green;
-                            font-weight: bold;
-                          }
                     }
                 }
 

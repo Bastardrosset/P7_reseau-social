@@ -1,60 +1,81 @@
 import React, { useState } from 'react';
+import SignupFormInput from '../FormInput/SignupFormInput';
 import axios from 'axios';
 
 const SignUpForm = () => {
   const [formSbmit, setFormSubmit] = useState(false);
-  const [pseudo, setPseudo] = useState('');// déclaration des variables d'état
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [controlPassword, setControlPassword] = useState('');
+  const [values, setValues] = useState({
+    pseudo: "",
+    email: "",
+    password: "",
+    comfirmPassword: "",
+  })
+
+  const inputs = [
+    {
+      id: 1,
+      name: "pseudo",
+      type: "text",
+      placeholder: "Pseudo",
+      errorMessage: "Pseudo doit être entre 3-55 sans caractères spécial",
+      label: "Pseudo",
+      pattern: "^[A-Za-z0-9]{3,55}$",
+      required: true,
+    },
+    {
+      id: 2,
+      name: "email",
+      type: "text",
+      placeholder: "Email",
+      errorMessage: "Email doit être valide",
+      label: "Email",
+      pattern: "^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$",
+      required: true,
+    },
+    {
+      id: 3,
+      name: "password",
+      type: "password",
+      placeholder: "Password",
+      errorMessage: "Password doit être minimun de 6 avec 1 nombre et 1 caractère spècial",
+      label: "Password",
+      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,50}$`,
+      required: true,
+    },
+    {
+      id: 4,
+      name: "confirmePassword",
+      type: "password",
+      placeholder: "Confirme password",
+      errorMessage: "Password don't match !",
+      label: "Confirme password",
+      pattern: values.password,
+      required: true,
+    },
+  ];
+
+  const onChange = (e) => {
+    setValues({...values, [e.target.name]: e.target.value})
+  }
 
   const handleRegister = async (e) => {
     e.preventDefault()
 
-    const terms = document.querySelector('#terms');
-    const pseudoError = document.querySelector('.pseudo.error');
-    const emailError = document.querySelector('.email.error');
-    const passwordError = document.querySelector('.password.error');
-    const passwordConfError = document.querySelector('.passwordConf.error');
-    const termsError = document.querySelector('.terms.error');
-
-    passwordConfError.innerHTML = "";
-    termsError.innerHTML = "";
-
-    if(password !== controlPassword || !terms.checked) {
-        if (password !== controlPassword) {
-        passwordConfError.textContent = "Les mots de passe ne correspondent pas !";
-      }
-
-        if (!terms.checked) {
-        termsError.innerHTML = "Veuillez valider les conditions générales !";
-        termsError.style.color = 'red';
-        termsError.style.marginTop = '10px';
-      }
-    } else {
       await axios({
       method: "post",
       url: `${process.env.REACT_APP_API_URL}api/auth/signup`,
       data: {
-        pseudo,
-        email,
-        password
+        values
       },
     })
       .then((res) => {
         if (res.data.errors) {
-          pseudoError.innerHTML = res.data.errors.pseudo;
-  
-          emailError.innerHTML = res.data.errors.email;
-
-          passwordError.innerHTML = res.data.errors.password;
 
         } else {
           setFormSubmit(true);
         }
       })
       .catch((error) => console.log(error))
-    };
   };
   return (
     <>
@@ -66,52 +87,22 @@ const SignUpForm = () => {
     ) : (
 
       <form action="" onSubmit={handleRegister} id="sign-up-form">
-        <label htmlFor='pseudo'>Pseudo</label>
+        {inputs.map((input) => (
+          <SignupFormInput 
+            key={input.id} 
+            {...input} 
+            value={values[input.name]}
+            onChange={onChange}/>
+        ))}
         <br/>
-        <input 
-          type="text" 
-          name="pseudo" 
-          id="pseudo"
-          onChange={(e) => setPseudo(e.target.value)}
-          value={pseudo} />
-            <div className='pseudo error'></div>
-          <br/>
-        <label htmlFor='email'>Email</label>
-        <br/>
-        <input 
-          type="text" 
-          name="email" 
-          id="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email} />
-            <div className='email error'></div>
-          <br/>
-        <label htmlFor='password'>Mot de passe</label>
-        <br/>
-        <input 
-          type="password" 
-          name="password" 
-          id="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password} />
-            <div className='password error'></div>
-          <br/>
-        <label htmlFor='password-conf'>Confirmer mot de passe</label>
-        <br/>
-        <input 
-          type="password" 
-          name="password" 
-          id="password-conf"
-          onChange={(e) => setControlPassword(e.target.value)}
-          value={controlPassword} />
-            <div className='passwordConf error'></div>
-          <br/>
+        <div>
           <input type="checkbox" id="terms" />
-          <label 
-            htmlFor='terms'>J'accepte les <a href='/' target="_blank" rel='noopener noreferrer'>conditions générales</a>
-          </label>
+            <label 
+              htmlFor='terms'>J'accepte les <a href='/' target="_blank" rel='noopener noreferrer'>conditions générales</a>
+            </label>
             <div className='terms error'></div>
-          <br/>
+        </div>
+        <br/>
         <input type="submit"  value="Valider inscription" />
       </form>
       )}

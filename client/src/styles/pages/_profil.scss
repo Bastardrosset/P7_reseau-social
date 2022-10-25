@@ -249,13 +249,6 @@
 
 
 /************ * Form de connection * ************/
-.email-error,
-.password-error,
-.error {
-  color: $red;
-  margin-top: 3px;
-}
-
 .log-container {
   position: relative;
   width: 90%;
@@ -277,50 +270,115 @@
       @media screen and (max-width: 767px) {
         width: 100%;
       }
+
     & .form-container {
       width: 100%;
       display: flex;
+      align-items: center;
       padding: 20px;
-      @media screen and (max-width: 912px) {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-      @media screen and (max-width: 767px) {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-
-      & ul {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        
-        & #auth, #login {
-          text-align: center;
-          box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
-          margin-top: 30px;
-          background-color: $red-3;
-          padding: 10px 20px;
-          border-radius: 10px;
-          transition: .2s ease;
-          cursor: pointer;
-
-          &:hover {
-              background-color: $red;
-              color: $white;
-              font-weight: 500;
+        @media screen and (max-width: 912px) {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+        @media screen and (max-width: 767px) {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+        & #login-form,
+        & #sign-up-form {
+          width: 70%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          @media screen and (max-width: 912px) {
+            padding-top: 30px;
+          }
+            & label {
+            border-bottom: 0.5px solid $ligthGray;
+            padding-bottom: 1px;
+             }
+            & input[type="submit"],
+              input[type="text"],
+              input[type="password"] {
+                font-family: $font-1;
+                margin-top: 5px;
+                font-size: 1.1rem;
+                border-radius: 10px;
+                padding: 10px 20px;
+                border: none;
+                outline: none;
+                width: 95%;
+                box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);   
+              }
+            & input[type="submit"]{
+                cursor: pointer;
+                margin-top: 30px;
+                color: $red;
+                background-color: $red-3;
+                transition: .2s ease;
+            &:hover {
+                color: $white;
+                font-weight: 500;
+                background-color: $red;
+              }
+            }
+            & .form-input,
+            & .login-form-input {
+              width: 100%;
+                & input {
+                  margin-bottom: 5px;
+                }
+            & span {
+                line-height: 30px;
+                color: $red;
+                display: none;
+              }
+            & input:invalid[focused="true"]{
+                border: 1px solid $red;
+              }
+            & input:invalid[focused="true"] ~ span {
+                display: block;
+              }
             }
           }
+            & .success{
+                position: absolute;
+                bottom: 70px;
+                left: 22%;
+                color: $green;
+                font-weight: bold;
+            }
+
+    & ul {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+        
+    & #auth, #login {
+      text-align: center;
+      box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+      margin-top: 30px;
+      background-color: $red-3;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: .2s ease;
+      cursor: pointer;
+
+    &:hover {
+      background-color: $red;
+      color: $white;
+      font-weight: 500;
       }
+    }
+  }
 
       & #login-form, #sign-up-form {
-        @media screen and (max-width: 912px) {
-          padding-top: 30px;
-        }
+        
         & label {
           border-bottom: 0.5px solid $ligthGray;
           padding-bottom: 2px;
@@ -329,21 +387,18 @@
             #password,
             input[type="submit"],
             input[type="text"],
+            input[type="password"],
             #password-conf {
               font-family: $font-1;
               font-size: 1.1rem;
               border-radius: 10px;
+              margin-top: 5px;
               padding: 10px 20px;
               border: none;
               outline: none;
               width: 95%;
               box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
-      
-          }
-          
-          & input {
-            margin-top: 15px;
-          }
+            }
       
           & input[type="submit"]{
             cursor: pointer;
@@ -381,6 +436,7 @@
       margin-bottom: 50px;
       color: $red;
     }
+
     & .log-desc {
       text-align: center;
       font-size: 1.2rem;
