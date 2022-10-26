@@ -1,3 +1,3 @@
-/backEnd/images
-/backEnd/node_modules
-/backEnd/config/.env
+/images
+/node_modules
+/config/.env
