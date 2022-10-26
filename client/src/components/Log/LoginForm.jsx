@@ -17,6 +17,7 @@ const inputs = [
     placeholder: 'Email',
     errorMessage: "Email inconnu ou mal saisi",
     label: 'Email',
+    pattern: "^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$",
     required: true, 
   },
   {
@@ -26,6 +27,7 @@ const inputs = [
     placeholder: 'Password',
     errorMessage: "Password inconnu ou mal saisi",
     label: 'Password',
+    pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,50}$`,
     required: true, 
   },
 ];
