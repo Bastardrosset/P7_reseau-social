@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import LeftNav from '../LeftNav'
-import { useDispatch, useSelector } from 'react-redux'
-import UploadImg from './UploadImg'
-import { updateBio } from '../../actions/user.actions'
-import { dateParser } from '../Utils'
+import React, { useState } from 'react';
+import LeftNav from '../LeftNav';
+import { useDispatch, useSelector } from 'react-redux';
+import UploadImg from './UploadImg';
+import { updateBio } from '../../actions/user.actions';
+import { dateParser } from '../Utils';
+
 
 const UpdateProfil = () => {
   const [bio, setBio] = useState('');
@@ -26,7 +27,11 @@ const UpdateProfil = () => {
         <div className='update-container'>
           <div className='user-picture'>
             <h3>Photo de profil</h3>
-              <img src={userData.picture} alt='user avatar' />
+              <img src={
+                userData.picture ?
+                userData.picture :
+                '/img/noAvatar.png'}  
+                alt='user avatar' />
             <UploadImg />
           </div>
           <div className='biographie-part'>

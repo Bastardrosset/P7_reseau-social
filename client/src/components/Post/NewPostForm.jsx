@@ -61,14 +61,18 @@ const NewPostForm = () => {
           <>
           <NavLink exact='true' to="/profil" >
           <div className="user-info">
-            <img src={userData.picture} alt="Avatar user"/>
+            <img src={
+                userData.picture ?
+                userData.picture :
+                '/img/noAvatar.png'}  
+                alt='user avatar' />
           </div>
           </NavLink>
           <div className="post-form">
             <textarea 
               name='message'
               id='message'
-              placeholder='Quoi de neuf ?'
+              placeholder={'Quoi de neuf ' + userData.pseudo + '?'}
               onChange={(e) => setMessage(e.target.value)}
               value={message} />
               {message || postPicture ? (
@@ -84,7 +88,7 @@ const NewPostForm = () => {
                     </div>
                     <div className="content">
                       <p>{message}</p>
-                      <img src={postPicture} alt=''/>
+                      <img src={postPicture} alt='Sujet du post'/>
                     </div>
                   </div>
                 </li>

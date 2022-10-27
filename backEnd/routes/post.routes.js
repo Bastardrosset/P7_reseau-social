@@ -10,8 +10,8 @@ router.patch('/like-post/:id', postController.likePost);
 router.patch('/unlike-post/:id', postController.unlikePost);
 
 // Commentaires
-router.patch('/comment-post/:id', postController.commentPost);
-router.patch('/edit-comment-post/:id', postController.editComment);
+router.put('/comment-post/:id', postController.commentPost);
+router.put('/edit-comment-post/:id', postController.editComment);
 router.patch('/delete-comment-post/:id', postController.deleteComment);
 
 module.exports = router;

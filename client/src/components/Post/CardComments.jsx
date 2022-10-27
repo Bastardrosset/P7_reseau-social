@@ -6,9 +6,9 @@ import EditDeleteComment from './EditDeleteComment';
 
 const CardComments = ({ post }) => {
 
-    const [text, setText] = useState("")
+    const [text, setText] = useState("");
     const userData = useSelector((state) => state.userReducer);
-    const usersData = useSelector((state) => state.usersReducer)
+    const usersData = useSelector((state) => state.usersReducer);
     const dispatch = useDispatch();
 
     const handleComment = (e) => {
@@ -16,7 +16,7 @@ const CardComments = ({ post }) => {
 
         if (text) {
             dispatch(addComment(post._id, userData._id, text, userData.pseudo, userData.isAdmin))
-            .then(() => dispatch(getPosts))
+            .then(() => dispatch(getPosts()))
             .then(() => setText(''))
         }
     }
@@ -39,11 +39,11 @@ const CardComments = ({ post }) => {
                                     usersData
                                     .map((user) => {
                                     if (user._id === comment.commenterId) {
-                                        return user.picture
+                                        return user.picture;
                                     } 
                                     else {
-                                        return null
-                                    }
+                                        return null;
+                                    };
                                     })
                                 .join('')
                             }
