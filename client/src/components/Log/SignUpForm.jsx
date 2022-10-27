@@ -3,7 +3,7 @@ import SignupFormInput from '../FormInput/SignupFormInput';
 import axios from 'axios';
 
 const SignUpForm = () => {
-  const [formSbmit, setFormSubmit] = useState(false);
+  const [formSubmit, setFormSubmit] = useState(false);
   const [values, setValues] = useState({
     pseudo: "",
     email: "",
@@ -61,25 +61,34 @@ const SignUpForm = () => {
   const handleRegister = async (e) => {
     e.preventDefault()
 
-      await axios({
-      method: "post",
-      url: `${process.env.REACT_APP_API_URL}api/auth/signup`,
-      data: {
-        values
-      },
-    })
-      .then((res) => {
-        if (res.data.errors) {
+    const terms = document.querySelector('#terms');
+    const termsError = document.querySelector('.terms.error');
+    termsError.innerHTML = "";
 
-        } else {
-          setFormSubmit(true);
-        }
+    if(!terms.checked) {
+      termsError.innerHTML = "Veuillez valider les conditions générales !";
+    } else {
+      await axios({
+        method: "post",
+        url: `${process.env.REACT_APP_API_URL}api/auth/signup`,
+        data: {
+          values
+        },
       })
-      .catch((error) => console.log(error))
+        .then((res) => {
+          if (res.data.errors) {
+  
+          } else {
+            setFormSubmit(true);
+          }
+        })
+        .catch((error) => console.log(error))
+    }
+ 
   };
   return (
     <>
-    {formSbmit ? (
+    {formSubmit ? (
       <>
       <SignUpForm />
       <h4 className='success'>Enregistrement réussi, veuillez vous connecter !</h4>

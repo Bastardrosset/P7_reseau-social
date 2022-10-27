@@ -96,6 +96,9 @@
                                     }
                                   }
                         }
+                        & .terms.error {
+                            color: $red;
+                        }
                         & .success{
                             position: absolute;
                             bottom: 70px;
@@ -586,6 +589,7 @@
                                                 }
                                                 &.comment-container.client {
                                                     background-color: $comment;
+                                                    font-weight: bold;
                                                 }
                                                 & p {
                                                     padding-left: 5px;

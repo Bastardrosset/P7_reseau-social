@@ -47,7 +47,7 @@ const CardComments = ({ post }) => {
                                     })
                                 .join('')
                             }
-                            alt="avatar utilisateur commenteur" />
+                            alt="avatar utilisateur commentaire" />
                         </div>
                         <div className='right-part'>
                             <div className='comment-header'>
