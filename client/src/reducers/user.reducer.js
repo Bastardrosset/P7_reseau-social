@@ -6,11 +6,14 @@ export default function userReducer(state = initialState, action) {// contient l
     switch (action.type) {
         case GET_USER: 
             return action.playload
+
         case UPLOAD_PICTURE:
+            console.log(action.playload)
             return {
                 ...state,
                 picture: action.playload,
             };
+
         case UPDATE_BIO:
             return {
                 ...state,
