@@ -15,17 +15,21 @@ const NewPostForm = () => {
 
   const handlePicture = (e) => {
     setPostPicture((e.target.files[0]))
+    setFile((e.target.files[0]))
   }
 
-  const handlePost = async (data) => {
+  const handlePost = async () => {
+    // console.log('message' , message)
+    // console.log('postPicture' , postPicture)
+    // console.log('file' , file)
     if (message || postPicture) {
       const data = new FormData();
-      data.append('data', JSON.stringify({
-        posterId: userData._id,
-        message: message
-      }))
+      data.append("posterId", userData._id);
+      data.append("message", message);
 
-      data.append('file', postPicture);
+     if (file) {
+      data.append('file', file);
+     } 
       
 
         await dispatch(addPost(data));
@@ -42,7 +46,6 @@ const NewPostForm = () => {
     setFile('');
   }
 
-
   useEffect(() => {
     if (!isEmpty(userData)){
       setIsLoading(false);
@@ -50,7 +53,6 @@ const NewPostForm = () => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData, message, file])
-
 
   return (
     <React.StrictMode>
@@ -74,7 +76,8 @@ const NewPostForm = () => {
               id='message'
               placeholder={'Quoi de neuf ' + userData.pseudo + '?'}
               onChange={(e) => setMessage(e.target.value)}
-              value={message} />
+              value={message} 
+            />
               {message || postPicture ? (
                 <li className='card-container'>
                   <div className="card-left">
@@ -88,7 +91,7 @@ const NewPostForm = () => {
                     </div>
                     <div className="content">
                       <p>{message}</p>
-                      <img src={postPicture} alt='Sujet du post'/>
+                      {/* <img src={postPicture} alt='Sujet du post'/> */}
                     </div>
                   </div>
                 </li>
@@ -96,7 +99,12 @@ const NewPostForm = () => {
             <div className="footer-form">
               <div className='icon'>
                   <i className="far fa-image"></i>
-                  <input type="file" id="file-upload" name="file" accept="jpg, png, jpeg" onChange={(e) => handlePicture(e)}/>
+                  <input 
+                    type="file" 
+                    id="file-upload" 
+                    name="file" 
+                    accept="jpg, png, jpeg" 
+                    onChange={(e) => handlePicture(e)}/>
               </div>
               <div className="btn-send">
                 {message || postPicture ? (

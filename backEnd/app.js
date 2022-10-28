@@ -1,11 +1,16 @@
 const express = require('express');
-require('dotenv').config({path: './config/.env'});
+require('dotenv').config({
+  path: './config/.env'
+});
 require('./config/db');
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
-const { checkUser, requireAuth } = require('./middelware/auth.middelware');// permet de controler le token
+const {
+  checkUser,
+  requireAuth
+} = require('./middelware/auth.middelware'); // permet de controler le token
 
 const cors = require('cors');
 const app = express();
@@ -26,14 +31,19 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Middelware
 app.use(bodyParser.json()); // analyseur accepte tous encodages Unicode et met a disposition le body des requetes
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
-app.use(cookieParser());// analyseur permet de décoder les cookies
+app.use(cookieParser()); // analyseur permet de décoder les cookies
 
-app.get('*', checkUser);// check dans toutes les routes si le token correspond a son id
+app.get('*', checkUser); // check dans toutes les routes si le token correspond a son id
 
-app.get('/jwtid', requireAuth, (req, res) => {// jwtId déclanche requireAuth  
-  res.status(200).send({userId: res.locals.user._id, role: res.locals.user.role})// renvoie d'ID utilisateur connecté
+app.get('/jwtid', requireAuth, (req, res) => { // jwtId déclanche requireAuth  
+  res.status(200).send({
+    userId: res.locals.user._id,
+    role: res.locals.user.role
+  }) // renvoie d'ID utilisateur connecté
 })
 
 
@@ -41,11 +51,9 @@ app.get('/jwtid', requireAuth, (req, res) => {// jwtId déclanche requireAuth
 const userRoutes = require('./routes/user.routes');
 const postRoutes = require('./routes/post.routes');
 
-
 // Routes
 app.use('/', userRoutes);
 app.use('/api/auth', userRoutes);
 app.use('/api/post', postRoutes);
-
 
 module.exports = app;

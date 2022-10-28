@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 
 // Schema mongo db des messages possibles
-const PostSchema = new mongoose.Schema(
-    {
+const PostSchema = new mongoose.Schema({
     posterId: {
         type: String,
         required: true,
@@ -15,6 +14,7 @@ const PostSchema = new mongoose.Schema(
     },
     picture: {
         type: String,
+        default: null,
     },
     video: {
         type: String,
@@ -24,21 +24,17 @@ const PostSchema = new mongoose.Schema(
         required: true,
     },
     comments: {
-        type: [
-            {
+        type: [{
             commenterId: String,
             commenterPseudo: String,
             text: String,
             timestamp: Number,
-            }
-        ],
+        }],
         required: true,
     },
-    },
-    {
-        timestamps: true,
-    }
-);
+}, {
+    timestamps: true,
+});
 
 const PostModel = mongoose.model('post', PostSchema);
 

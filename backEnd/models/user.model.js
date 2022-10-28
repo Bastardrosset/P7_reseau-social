@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
-const { isEmail } = require('validator');// Bibliotheque nodeModule, fonction pour sécuriser les emails
+const {
+    isEmail
+} = require('validator'); // Bibliotheque nodeModule, fonction pour sécuriser les emails
 
 const bcrypt = require('bcrypt'); // bibliothèque pour vous aider à hacher les mots de passe
 
 // Schema mongo db utilisateur
-const UserSchema = mongoose.Schema(
-    {
+const UserSchema = mongoose.Schema({
         pseudo: {
             type: String,
             required: true,
@@ -22,7 +23,7 @@ const UserSchema = mongoose.Schema(
             lowercase: true,
             trim: true,
         },
-        password:{
+        password: {
             type: String,
             required: true,
             max: 50,
@@ -38,7 +39,7 @@ const UserSchema = mongoose.Schema(
         },
         likes: {
             type: [String],
-        }, 
+        },
         isAdmin: {
             type: Boolean,
             default: false,
@@ -52,20 +53,22 @@ const UserSchema = mongoose.Schema(
 
 // function crypte le password avant le save
 UserSchema.pre("save", async function (next) {
-    const salt = await bcrypt.genSalt();// bcrypt genere une serie de cryptes aléatoires pour saler le password
+    const salt = await bcrypt.genSalt(); // bcrypt genere une serie de cryptes aléatoires pour saler le password
     this.password = await bcrypt.hash(this.password, salt);
     next();
 });
 
 // Function décrypte le password selon l'utilisateur quand login
-UserSchema.statics.login = async function(email, password) {//Static.login controle quand login email & password, bcrypt compare
-    const user = await this.findOne({ email });
+UserSchema.statics.login = async function (email, password) { //Static.login controle quand login email & password, bcrypt compare
+    const user = await this.findOne({
+        email
+    });
     if (user) {
-        const auth = await bcrypt.compare(password, user.password)//Bcrypt compare avec static.login l'email avec le password qui lui a ete passé
+        const auth = await bcrypt.compare(password, user.password) //Bcrypt compare avec static.login l'email avec le password qui lui a ete passé
         if (auth) {
             return user;
         }
-        throw Error('Password incorrect')//L'instruction throw permet de lever une exception définie par l'utilisateur
+        throw Error('Password incorrect') //L'instruction throw permet de lever une exception définie par l'utilisateur
     }
     throw Error('Password incorrect')
 };
