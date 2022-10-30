@@ -4,15 +4,15 @@ import { useSelector } from 'react-redux';
 
 const LoginFormInput = (props) => {
     const [focused, setFocused] = useState(false);
-    const {label, errorMessage, onChange, id, ...inputProps} = props;
+    const {label, errorMessage, errorMailMessage, onChange, id, ...inputProps} = props;
     const usersEmail = useSelector((state) => state.usersReducer);
 
-
     const handleFocused = (e) => {
-        setFocused(true)
         usersEmail.map((userEmail) => {
-          // if (userEmail.email !== e.target.value) {
-          //   alert('Email inconnu')
+          // if (userEmail.email !== e.target.value){
+          //   console.log("error")
+          // }  else {
+          //  return errorMessage
           // }
         })
     }
@@ -23,7 +23,7 @@ const LoginFormInput = (props) => {
         <input {...inputProps} 
             onChange={onChange} 
             onBlur={handleFocused}
-            onFocus={() => inputProps.name === "password" && setFocused(true)}
+            onFocus={() => inputProps.name === "email" && setFocused(true)}
             focused={focused.toString()}
         />
         <span>{errorMessage}</span>

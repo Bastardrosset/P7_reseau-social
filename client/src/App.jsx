@@ -31,7 +31,7 @@ const App = () => {
 
   return (
     <React.StrictMode>
-      <UidContext.Provider value={uid}>
+      <UidContext.Provider value={uid} >
         <Routes />
       </UidContext.Provider>
     </React.StrictMode>
