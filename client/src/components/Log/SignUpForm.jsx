@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const SignUpForm = () => {
   const [formSubmit, setFormSubmit] = useState(false);
+
   const [values, setValues] = useState({
     pseudo: "",
     email: "",
@@ -56,6 +57,7 @@ const SignUpForm = () => {
 
   const onChange = (e) => {
     setValues({...values, [e.target.name]: e.target.value})
+
   }
 
   const handleRegister = async (e) => {
