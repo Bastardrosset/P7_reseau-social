@@ -11,9 +11,9 @@ const LoginFormInput = (props) => {
     const handleFocused = (e) => {
         setFocused(true)
         usersEmail.map((userEmail) => {
-          if (userEmail.email !== e.target.value) {
-            alert('Email inconnu')
-          }
+          // if (userEmail.email !== e.target.value) {
+          //   alert('Email inconnu')
+          // }
         })
     }
     
