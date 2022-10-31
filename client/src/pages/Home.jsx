@@ -4,7 +4,7 @@ import { UidContext } from '../components/AppContext'
 import LeftNav from "../components/LeftNav"
 import Thread from '../components/Thread'
 import NewPostForm from '../components/Post/NewPostForm'
-import Log from '../components/Log'
+import Auth from '../components/Auth'
 
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
           <div className='main'>
             <h2>Home</h2>
             <div className="home-header">
-              {uid ? <NewPostForm /> : <Log login={true} signup={false} />}
+              {uid ? <NewPostForm /> : <Auth login={true} signup={false} />}
             </div>
             <Thread />
           </div>

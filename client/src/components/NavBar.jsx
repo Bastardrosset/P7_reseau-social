@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { UidContext } from './AppContext'
-import Logout from './Log/Logout'
+import Logout from './Auth/Logout'
 
 
 const NavBar = () => {

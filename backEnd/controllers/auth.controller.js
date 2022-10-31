@@ -40,21 +40,18 @@ module.exports.signUp = async (req, res) => {
 
 // Function d'identification a un compte
 module.exports.login = async (req, res) => {
-    const {
-        email,
-        password
-    } = req.body.values;
+
+    const email = req.body.email;
+    const password = req.body.password;
+    console.log("values", email, password)
 
     try {
         const user = await UserModel.login(email, password);
         const token = createToken(user._id, user.isAdmin);
-        res.cookie('jwt', token, {
-            httpOnly: true,
-            maxAge: maxAge
-        }) //3eme parametre httpOnly déclare le cookie consultable que depuis uniquement notre serveur
         res.status(200).json({
-            user: user._id
-        })
+            userId: user._id,
+            token: token
+        });
     } catch (error) {
         res.status(401).send({
             error
@@ -64,8 +61,5 @@ module.exports.login = async (req, res) => {
 
 // Function déconnection
 module.exports.logout = (req, res) => {
-    res.cookie('jwt', '', {
-        maxAge: 1
-    }); // maxAge passe à 1 miniseconde
     res.redirect('/');
 }

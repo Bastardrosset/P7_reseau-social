@@ -1,8 +1,21 @@
 import axios from "axios";
 
 export const GET_USER = "GET_USER";
+export const LOGIN = "LOGIN";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 export const UPDATE_BIO = "UPDATE_BIO";
+
+export const login = (values) => {
+    console.log('Login action', values)
+    return (dispatch) => {
+        return axios
+        .post(`${process.env.REACT_APP_API_URL}api/auth/login`, values)
+        .then((res) => {
+            dispatch({ type: LOGIN, playload: res.data })
+        })
+        .catch((error) => console.log(error))
+    }
+}
 
 //Renvoie toute la data de l'user
 export const getUser = (uid) => {
