@@ -43,7 +43,7 @@ const Card = ({ post }) => {// prop post de Thread
                         return user.picture
                       } 
                       else {
-                        return null
+                        return null;
                       }
                     })
                   .join('')

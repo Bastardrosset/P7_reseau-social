@@ -69,6 +69,8 @@ module.exports.updatePost = (req, res) => {
 
 //function supprimer son post
 module.exports.deletePost = (req, res) => {
+
+    // Vérifier que le posterID = le userID contenu dans le token ou user du token admin
     if (!ObjectId.isValid(req.params.id)) { // Methode de verification de l'ID passé en parametres
         return res.status(400).send('ID inconnu : ' + req.params.id)
     }
@@ -76,7 +78,11 @@ module.exports.deletePost = (req, res) => {
         req.params.id,
         (error, docs) => {
             if (!error) {
+
                 res.status(200).send('post');
+
+                res.status(200).send(`Post ${req.params.id} supprimé !`);
+
             } else {
                 console.log("Suppression :" + error)
             }

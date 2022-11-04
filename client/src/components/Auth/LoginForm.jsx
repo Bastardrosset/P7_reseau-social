@@ -2,12 +2,17 @@
 import axios from 'axios';
 import LoginFormInput from '../FormInput/LoginFormInput';
 import { useState } from 'react';
+import { login } from '../../actions/user.actions';
+import { useDispatch } from 'react-redux';
+
 
 const LoginForm = () => {
   const [values, setValues] = useState({// déclaration des valeurs des variables d'état
     email: "",
     password: "",
   });
+
+  const dispatch = useDispatch();
 
 const inputs = [
   {
@@ -54,6 +59,27 @@ const inputs = [
     .catch((err) => {
       console.log(err)
     });
+
+    console.log('Handle login')
+    dispatch(login(values))
+    // axios({
+    //   method: "post",
+    //   url: `${process.env.REACT_APP_API_URL}api/auth/login`,
+    //   withCredentials: true,
+    //   data: {
+    //     values
+    //   },
+    // })
+    // .then((res) => {
+    //   if (res.data.errors) {
+    //     console.error('Erreur login : ', res.data.errors)
+    //   } else {
+    //     console.log('Authentification réussie :)', res.data);
+    //   }
+    // })
+    // .catch((err) => {
+    //   console.log(err)
+    // });
   };
   const onChange = (e) => {
     setValues({...values, [e.target.name]: e.target.value})

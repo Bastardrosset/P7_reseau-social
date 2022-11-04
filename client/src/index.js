@@ -16,6 +16,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 const store = createStore(
   rootReducer, composeWithDevTools(applyMiddleware(thunk)),
+  rootReducer, composeWithDevTools(applyMiddleware(thunk))
+
 )
 
 store.dispatch(getUsers())

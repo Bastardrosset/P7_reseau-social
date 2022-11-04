@@ -8,6 +8,10 @@ export default combineReducers({// regroupe tous les states (état)
     usersReducer,
     postReducer,
 },
+
 { 
+
+{
+
     // devTools: false
 })

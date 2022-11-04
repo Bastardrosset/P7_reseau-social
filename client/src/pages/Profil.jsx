@@ -19,7 +19,7 @@ const Profil = () => {
       <div className='log-container'>
         
         {console.log('uid', uid)}
-        
+
         <Auth login={false} signup={true}/>
         <div className='log-container-title'>
           <h2>Le reseau du groupe</h2>

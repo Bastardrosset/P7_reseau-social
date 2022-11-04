@@ -27,6 +27,7 @@ module.exports.signUp = async (req, res) => {
 };
 
 // Function d'identification a un compte
+
 module.exports.signIn = async (req, res) => {
     const { email, password } = req.body.values;
 console.log('avant try')
@@ -45,6 +46,21 @@ console.log('res cookie', res.cookie)
         res.status(200).json({ user: user._id });
 console.log('res status', res.status)
 
+
+module.exports.login = async (req, res) => {
+
+    const email = req.body.email;
+    const password = req.body.password;
+    console.log("values", email, password)
+
+    try {
+        const user = await UserModel.login(email, password);
+        const token = createToken(user._id, user.isAdmin);
+        res.status(200).json({
+            userId: user._id,
+            token: token
+        });
+
     } catch (error) {
         res.status(401).send({ error });
 console.log('error', res.status)
@@ -54,6 +70,9 @@ console.log('error', res.status)
 
 // Function déconnection
 module.exports.logout = (req, res) => {
+
     res.cookie('jwt', '', { maxAge: 1 }); // maxAge passe à 1 miniseconde
+
+
     res.redirect('/');
 };
