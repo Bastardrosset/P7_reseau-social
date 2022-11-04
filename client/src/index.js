@@ -11,11 +11,11 @@ import { getUsers } from './actions/users.actions';
 import { getPosts } from './actions/post.actions';
 
 //Outil developpement
-// import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 
 const store = createStore(
-  rootReducer, applyMiddleware(thunk),
+  rootReducer, composeWithDevTools(applyMiddleware(thunk)),
 )
 
 store.dispatch(getUsers())

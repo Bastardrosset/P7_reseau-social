@@ -2,13 +2,13 @@ import { GET_USER, UPDATE_BIO, UPLOAD_PICTURE } from '../actions/user.actions'
 
 const initialState = {};
 
-export default function userReducer(state = initialState, action) {// contient l'état des action user exporté vers dossier index
+export default function userReducer(state = initialState, action) {
     switch (action.type) {
         case GET_USER: 
             return action.playload
 
         case UPLOAD_PICTURE:
-            console.log(action.playload)
+            // console.log(action.playload)
             return {
                 ...state,
                 picture: action.playload,

@@ -21,10 +21,12 @@ module.exports.readPost = (req, res) => {
 //function crééer un post
 module.exports.createPost = async (req, res) => {
     // console.log('before create')
+    const token = req.cookies.jwt;
     let filename;
     if (req.file == null) {
         filename = req.body.posterId + Date.now() + ".jpg";
     }
+    
     const newPost = new PostModel({
         posterId: req.body.posterId,
         message: req.body.message,
@@ -74,7 +76,7 @@ module.exports.deletePost = (req, res) => {
         req.params.id,
         (error, docs) => {
             if (!error) {
-                res.send(docs);
+                res.status(200).send('post');
             } else {
                 console.log("Suppression :" + error)
             }

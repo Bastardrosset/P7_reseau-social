@@ -9,5 +9,5 @@ export default combineReducers({// regroupe tous les states (état)
     postReducer,
 },
 { 
-    devTools: false
+    // devTools: false
 })

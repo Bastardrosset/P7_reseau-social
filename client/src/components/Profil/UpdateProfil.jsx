@@ -16,7 +16,7 @@ const UpdateProfil = () => {
     dispatch(updateBio(userData._id, bio));
     setUpdateForm(false);
   } 
-
+console.log('userData.picture', userData.picture)
   return (
     <React.StrictMode>
       <div className='profil-container'>
@@ -28,9 +28,7 @@ const UpdateProfil = () => {
           <div className='user-picture'>
             <h3>Photo de profil</h3>
               <img src={
-                userData.picture ?
-                userData.picture :
-                '/img/noAvatar.png'}  
+                userData.picture }  
                 alt='user avatar' />
             <UploadImg />
           </div>

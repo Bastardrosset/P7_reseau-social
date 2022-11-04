@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { UidContext } from './AppContext'
-import Logout from './Log/Logout'
+import Logout from './Auth/Logout'
 
 
 const NavBar = () => {
@@ -31,9 +31,8 @@ const NavBar = () => {
                         <div className="avatar-user">
                           <h5>Bienvenue {userData.pseudo}</h5>
                           <img src= {
-                            userData.picture ?
-                            userData.picture :
-                            '/img/noAvatar.png'} alt="Avatar user" />
+                            userData.picture } 
+                            alt="Avatar user" />
                         </div>
                       </NavLink>
                     </li>

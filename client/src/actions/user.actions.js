@@ -4,6 +4,7 @@ export const GET_USER = "GET_USER";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 export const UPDATE_BIO = "UPDATE_BIO";
 
+
 //Renvoie toute la data de l'user
 export const getUser = (uid) => {
     return (dispatch) => {// dispatch envoi au reducer les infos
