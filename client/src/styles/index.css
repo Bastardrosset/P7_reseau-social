@@ -1,0 +1,206 @@
+@font-face {
+  font-family: "font-1";
+  src: url(./assets/fonts/TiroBangla-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.profil-page {
+  margin: 80px auto 0;
+  max-width: 1200px;
+}
+
+.profil-page .connection-form {
+  border: none;
+  background: #a21fff19;
+  min-width: 490px;
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.profil-page .connection-form .form-container ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.profil-page .connection-form .form-container ul li {
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 10px 20px;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
+}
+
+.profil-page .connection-form .form-container ul .active-btn {
+  background: #af2f0065;
+}
+
+.profil-page .connection-form .form-container ul .active-btn:hover {
+  background: #b33000d9;
+}
+
+.profil-page .connection-form .form-container ul li:not(.active-btn):hover {
+  -webkit-transform: translateX(3px);
+          transform: translateX(3px);
+}
+
+.profil-page .connection-form .form-container ul #login {
+  position: relative;
+}
+
+@media screen and (max-width: 550px) {
+  .profil-page .connection-form .form-container ul #login {
+    margin-bottom: 30px;
+  }
+  .profil-page .connection-form .form-container ul #login:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: #af2f0065;
+  }
+}
+
+.img-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 400px;
+  height: auto;
+}
+
+.img-container h2 {
+  font-size: 22px;
+  color: #b33000d9;
+}
+
+.img-container img {
+  width: 300px;
+  height: auto;
+  margin-top: 30px;
+}
+
+/************ * Form de connection * ************/
+#login-form #email,
+#login-form #password,
+#login-form input[type="submit"] {
+  font-family: "font-1", sans-serif;
+  border-radius: 20px;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+}
+
+#login-form input {
+  margin-top: 5px;
+}
+
+#login-form input[type="submit"] {
+  cursor: pointer;
+  margin-top: 30px;
+  color: #af2f0065;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
+}
+
+#login-form input[type="submit"]:hover {
+  color: #e7e7e7;
+  font-weight: bold;
+  background-color: #e23c003e;
+}
+
+#sign-up-form #pseudo,
+#sign-up-form #email,
+#sign-up-form #password,
+#sign-up-form #password-conf,
+#sign-up-form input[type="submit"] {
+  font-family: "font-1", sans-serif;
+  border-radius: 20px;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+}
+
+#sign-up-form input[type="submit"] {
+  margin-top: 5px;
+}
+
+#sign-up-form input[type="submit"] {
+  cursor: pointer;
+  color: #af2f0065;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
+}
+
+#sign-up-form input[type="submit"]:hover {
+  color: #e7e7e7;
+  font-weight: bold;
+  background-color: #e23c003e;
+}
+
+#sign-up-form input[type="checkbox"] {
+  margin-right: 3px;
+}
+
+.nav-container {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nav-container .logo {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav-container .logo img {
+  width: 150px;
+  height: 100%;
+}
+
+.nav-container .logo h1 {
+  font-size: 2.2rem;
+  color: #b33000d9;
+}
+/*# sourceMappingURL=index.css.map */

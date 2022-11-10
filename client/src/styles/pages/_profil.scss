@@ -1,0 +1,408 @@
+.profil-page {
+  width: 100vw;
+    margin: 80px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    & .left-nav-container {
+      flex: 1;
+      @media screen and (max-width: 767px) {
+        transform: translateY(-120px);
+    }
+    }
+    & .success{
+      position: absolute;
+      bottom: 70px;
+      left: 22%;
+      color: $green;
+      font-weight: bold;
+    }
+  }
+
+.profil-container {
+  flex: 10;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 140px;
+  position: relative;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+}
+
+  & .title-profil-page {
+    width: 100%;
+    position: absolute;
+    margin-left: -5%;
+    transform: translateY(-60px);
+
+      & h2 {
+      text-align: center;
+      font-size: 2rem;
+      font-family: $font-1;
+      } 
+  }
+
+  & .update-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+      @media screen and(max-width: 550px) {
+        width: 100%;
+        flex-direction: column;
+        transform: translateY(-50px);
+      }
+
+    & .user-picture {
+      width: 40%;
+      margin-left: 20px;
+      height: auto;
+      display: flex;
+      align-items: center;
+        @media screen and(max-width: 550px) {
+          width: 90%;
+          flex-direction: column;
+          margin-left: 0px;
+        }
+        & img {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+    }
+
+    & .biographie-part {
+      margin: 0px 40px;
+      width: 50%;
+        @media screen and(max-width: 550px) {
+          margin-top: 40px;
+          width: 90%;
+          flex-direction: column;
+        }
+
+        & .biographie-update {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+            & h3 {
+              text-align: center;
+              font-size: 1.4rem;
+            }
+
+            & p {
+              padding: 10px;
+              margin: 10px 0px;
+              border-radius: 10px;
+              width: 100%;
+              box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+              font-family: $font-2;
+              font-size: 1.1rem;
+            }
+
+            & textarea[type="text"]{
+              width: 100%;
+              height: 50px;
+              resize: none;
+              border: none;
+              margin: 10px 0px;
+              padding: 5px;
+            }
+
+            & button {
+              width: 80%;
+              font-size: 1rem;
+              padding: 5px 10px;
+              border: none;
+              border-radius: 10px;
+              cursor: pointer;
+              transition: .2s ease;
+              box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+              background-color: $red-3;
+              margin-bottom: 20px;
+
+                &:hover {
+                  background-color: $red;
+                  color: $white;
+                  font-weight: 500;
+                  border: none;
+                }
+            }
+        }
+        & h4 {
+          font-size: 1.2rem;
+        } 
+
+        & h5 {
+          font-size: 1.2rem;
+          border-bottom: 1px solid $red;
+        }
+    }
+
+    & .user-picture,
+      .biographie-part {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+      padding: 20px;
+      height: 100%;
+      border-radius: 25px;
+    }
+
+    & h3 {
+      font-size: 1.4rem;
+      font-family: $font-1;
+    }  
+  }
+
+  & .popup-profil-container {
+    position: absolute;
+    }
+
+    & .modal {
+      border-radius: 20px;
+      border: 1px solid $black;
+      position: absolute; 
+      padding: 20px;
+      width: 700px;
+      height: 400px;
+      transform: translate(40%, -10px);
+      background-color: $purple-3;
+
+        & .title-modal {
+          display: flex;
+          justify-content: space-between;
+
+          & h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+          }
+          
+          & span {
+            color: $white;
+            font-weight: bolder;
+            cursor: pointer;
+            transition: .2s ease;
+
+              &:hover{
+                transform: scale(1.2);
+              }
+          }
+        }
+        & h4,
+        & h3 {
+          color: $white;
+          font-weight: bold;
+        }
+      
+        & h4 {
+          font-size: 1.4rem;
+        }
+
+          & li {
+            margin: 0px 20px;
+          }
+            
+              &:hover {
+                background-color: $red-2;
+                color: $white;
+                font-weight: bold;
+              }
+          }
+}
+      
+
+
+//formulaire Upload-Picture user_profil
+.upload-picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+
+    & label, input {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+      width: 100%;
+      padding: 5px 10px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: .2s ease;
+      box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+      background-color: $red-3;
+        &:hover {
+          background-color: $red;
+          color: $white;
+          font-weight: 500;
+          border: none;
+        }
+    }
+
+  & input[type="file"] {
+    display: none;
+  }
+}
+
+
+/************ * Form de connection * ************/
+.log-container {
+  position: relative;
+  width: 90%;
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+    @media screen and (max-width: 767px) {
+      display: flex;
+      flex-direction: column-reverse;
+  }
+
+  & .connection-form {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
+
+    & .form-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+        @media screen and (max-width: 912px) {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+        @media screen and (max-width: 767px) {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+        & #login-form,
+        & #sign-up-form {
+          width: 70%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          @media screen and (max-width: 912px) {
+            padding-top: 30px;
+          }
+            & label {
+            border-bottom: 0.5px solid $ligthGray;
+            padding-bottom: 1px;
+             }
+            & input[type="submit"],
+              input[type="text"],
+              input[type="password"] {
+                font-family: $font-1;
+                margin-top: 5px;
+                font-size: 1.1rem;
+                border-radius: 10px;
+                padding: 10px 20px;
+                border: none;
+                outline: none;
+                width: 95%;
+                box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);   
+              }
+            & input[type="submit"]{
+                cursor: pointer;
+                margin-top: 30px;
+                color: $red;
+                background-color: $red-3;
+                transition: .2s ease;
+            &:hover {
+                color: $white;
+                font-weight: 500;
+                background-color: $red;
+              }
+            }
+            & .form-input,
+            & .login-form-input {
+              width: 100%;
+                & input {
+                  margin-bottom: 5px;
+                }
+            & span {
+                line-height: 30px;
+                color: $red;
+                display: none;
+              }
+            & input:invalid[focused="true"]{
+                border: 1px solid $red;
+              }
+            & input:invalid[focused="true"] ~ span {
+                display: block;
+              }
+            }
+          }
+            & .success{
+                position: absolute;
+                bottom: 70px;
+                left: 22%;
+                color: $green;
+                font-weight: bold;
+            }
+
+    & ul {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+        
+    & #auth, #login {
+      text-align: center;
+      box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+      margin-top: 30px;
+      background-color: $red-3;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: .2s ease;
+      cursor: pointer;
+
+    &:hover {
+      background-color: $red;
+      color: $white;
+      font-weight: 500;
+      }
+    }
+  }}
+}
+  & .log-container-title {
+    position: relative;
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+      @media screen and (max-width: 767px) {
+      width: 100%;
+    }
+
+    & h2 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 50px;
+      color: $red;
+    }
+
+    & .log-desc {
+      text-align: center;
+      font-size: 1.2rem;
+      column-rule: $ligthGray;
+        @media screen and (max-width: 412px) {
+          margin: 10px;
+        }
+    }
+  }
+}
+
+

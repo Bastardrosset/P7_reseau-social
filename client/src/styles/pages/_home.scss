@@ -1,0 +1,675 @@
+.home {
+    position: relative;
+    display: flex;
+    margin-top: 80px;
+    width: 100%;
+        @media screen and (max-width: 767px) {
+            flex-direction: column;
+        }
+        & .left-nav-container {
+            flex: 1;
+        }
+        & h2 {
+            font-family: $font-1;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        & .main {
+            flex: 10;
+            width: 100%;
+            & .home-header {
+                position: relative;
+                width: 90%;
+                margin-left: 30px;
+                margin-bottom: 40px;
+                min-height: 150px;
+                border-radius: 20px;
+                box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+
+                &::after {
+                    margin-top: 30px;
+                    position: absolute;
+                    content: "";
+                    width: 90%;
+                    height: 0.5px;
+                    background-color: $ligthGray;
+                    margin-left: 50%;
+                    transform: translateX(-50%) rotate(180deg);
+                }
+                & .connection-form{
+                    & .form-container {
+                        display: flex;
+                        flex-direction: row;
+                        & #login-form,
+                        & #sign-up-form {
+                            flex: 6;
+                            padding: 20px;
+                            margin-left: 20px;
+
+                            & label {
+                                padding-bottom: 1px;
+                              }
+                              & input[type="submit"],
+                                input[type="text"],
+                                input[type="password"] {
+                                font-family: $font-1;
+                                margin-top: 5px;
+                                font-size: 1.1rem;
+                                border-radius: 10px;
+                                padding: 10px 20px;
+                                border: none;
+                                outline: none;
+                                width: 95%;
+                                box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);   
+                                }
+                                & input[type="submit"]{
+                                    cursor: pointer;
+                                    margin-top: 30px;
+                                    color: $red;
+                                    background-color: $red-3;
+                                    transition: .2s ease;
+                        
+                                      &:hover {
+                                        color: $white;
+                                        font-weight: 500;
+                                        background-color: $red;
+                                      }
+                                  }
+                                  & .form-input,
+                                  & .login-form-input {
+                                    display: flex;
+                                    flex-direction: column;
+                                    & input {
+                                        margin-bottom: 5px;
+                                    }
+                                    & p {
+                                        // color: $red;
+                                    }
+                                    & span {
+                                        line-height: 30px;
+                                        color: $red;
+                                        display: none;
+                                    }
+                                    & input:invalid[focused="true"]{
+                                        border: 1px solid $red;
+                                    }
+                                    & input:invalid[focused="true"] ~ span {
+                                        display: block;
+                                    }
+                                  }
+                        }
+                        & .terms.error {
+                            color: $red;
+                        }
+                        & .success{
+                            position: absolute;
+                            bottom: 70px;
+                            left: 22%;
+                            color: $green;
+                            font-weight: bold;
+                          }
+                            & ul {
+                                flex: 6;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                & li {
+                                    cursor: pointer;
+                                    border-radius: 20px;
+                                    padding: 10px 20px;
+                                    transition: .2s ease;
+                                    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+                                    margin-top: 10px;
+                                    background-color: $red-3;
+
+                                    &:hover {
+                                        background-color: $red;
+                                        color: $white;
+                                        font-weight: 500;
+                                    }
+                                }
+                                li:not(.active-btn) {
+                                    &:hover {
+                                        transform: translateX(3px);
+                                    }
+                                }
+                                & #login {
+                                position: relative;
+                                    @media screen and(max-width: 550px) {
+                                    margin-bottom: 30px;
+                            
+                                    &:after {
+                                        content: "";
+                                        position: absolute;
+                                        bottom: -10px;
+                                        left: 50%;
+                                        transform: translateX(-50%);
+                                        width: 80%;
+                                        height: 1px;
+                                        background: $red-2;
+                                    }
+                                }}
+                            }
+                        
+                    }
+                }
+
+                & .post-container {
+                    position: relative;
+                    width: 100%;
+                    height: auto;
+                    resize: none;
+                    position: relative;
+                    
+                    & .data {
+                        position: absolute;
+                        right: 10px;
+                        top: 5px;
+                    }
+                    & a {
+                        position: absolute;
+                        max-width: 30px;
+                        height: 30px;
+                        left: 10px;
+                    }
+                    
+                    & .user-info {
+                        max-width: 30px;
+                        height: 30px;
+                        margin: 10px 0px 20px 0px;
+                        
+                        & img {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+
+                        }
+                    }
+                    & .post-form {
+                        position: relative;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        & textarea {
+                            width: 90%;
+                            height: 60px;
+                            border-radius: 20px;
+                            border: none;
+                            padding: 5px 20px;
+                            margin-bottom: 15px;
+                            margin-top: 60px;
+                            line-height: 18px;
+                            font-size: 1.2rem;
+                            resize: none;
+                            box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+                                &:focus {
+                                    outline: none;
+                                }
+                            }
+
+                            & .card-container {
+                                position: relative;
+                                width: 100%;
+                                
+                                & .card-left {
+                                    position: absolute;
+                                    left: 0;
+                                    width: 100%;
+                                        & img {
+                                            width: 30px;
+                                            height: 30px;
+                                            border-radius: 50%;
+                                        }
+                                }
+
+                                & .card-right {
+                                    position: relative;
+                                    width: 100%;
+                                    & span {
+                                        position: absolute;
+                                        right: 0;
+                                        top: 0;
+                                    }
+    
+                                    & .card-header {
+                                        width: 100%;
+                                    }
+                                    & .pseudo {
+                                        color: $purple;
+                                        display: flex;
+                                        margin-left: 40px;
+                                    }
+                                    & .content {
+                                        position: relative;
+                                        width: 90%;
+                                        margin-left: 50%;
+                                        transform: translateX(-50%);
+                                        padding: 10px;
+                                        margin-top: 10px;
+                                        border: 1px solid $red;
+                                        border-radius: 20px;
+                                            & img {
+                                                width: 80%;
+                                                margin: 20px;
+                                                border-radius: 20px;
+                                            }
+                                            & p {
+                                                display: block;
+                                                position: relative;
+                                                padding: 5px;
+                                                max-width: 400px;
+                                            }
+                                    }
+                                }
+
+                                & .card-post {
+                                    width: 100%;
+                                    & .update-post {
+                                        width: 100%;
+                                        & .update-post-area {
+                                            width: 90%;
+                                            resize: none;
+                                            min-height: 50px;
+                                        }
+                                    }
+                                }
+                            }
+                               
+                        & .footer-form {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            & .icon {
+                                position: relative;
+                                display: flex;
+                                align-items: center;
+                                flex: 1;
+                                & .fa-image {
+                                    position: relative;
+                                    font-size: 1.6rem;
+                                    color: $red;
+                                    cursor: pointer;
+                                }
+                                & button {
+                                    width: 100%;
+                                    padding: 5px 20px;
+                                    margin-bottom: 5px;
+                                    margin-right: 10px;
+                                    border-radius: 10px;
+                                    border: 0.5px solid $red;
+                                    background-color: $red-3;
+                                    font-weight: 500;
+                                    transition: .2s ease;
+                                    cursor: pointer;
+                                    &:hover {
+                                        background-color: $red-2;
+                                        color: $white;
+                                }}
+                                    & #file-upload{
+                                        width: 30px;
+                                        height: 40px;
+                                        margin-right: 30px;
+                                        transform: translate(-35px, -15px);
+                                        opacity: 0;
+                                        cursor: pointer;
+                                    }
+                            }
+                            & .btn-send {
+                                display:  flex;
+                                flex: 2;
+                                margin-top: 15px;
+                                margin-bottom: 10px;
+                            & .send,
+                            & .cancel {
+                                width: 100%;
+                                padding: 5px 20px;
+                                margin-bottom: 5px;
+                                border-radius: 10px;
+                                background-color: $red-3;
+                                font-weight: 500;
+                                transition: .2s ease;
+                                border: none;
+                                box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+                                cursor: pointer;
+                                &:hover {
+                                    background-color: $red;
+                                    color: $white;
+                                    font-weight: 500;
+                                }
+                            }
+                            & .send {
+                                margin-left: 20px;
+                            }
+                            }
+                        }
+                    }
+                }
+            }
+            & .thread-container {
+                width: 100%;
+                margin-left: 10px;
+                    & ul {
+                        margin: 20px;
+                        width: 90%;
+                        position: relative;
+                        border-radius: 20px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+
+                        & .card-container {
+                            box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.161);
+                            border-radius: 15px;
+                            width: 100%;
+                            padding: 10px;
+                            margin: 10px;
+                            background-color: $white;
+                            position: relative;
+                            display: flex;
+
+
+                            & .card-img-user {
+                                position: absolute;
+                                width: 40px;
+                                height: 40px;
+                                margin-bottom: 20px;
+                                margin-right: 15px;
+                                    & img {
+                                        width: 40px;
+                                        height: 40px;
+                                        object-fit: cover;
+                                        border-radius: 50%;
+                                    }
+                            }
+                            & .card-post {
+                                width: 100%;
+                                position: relative;
+                                margin-bottom: 10px;
+                                    & .card-post-header {
+                                        width: 100%;
+                                        height: 40px;
+                                        display: flex;
+                                        position: relative;
+                                        margin-bottom: 30px;
+
+                                        & .pseudo {
+                                            position: relative;
+                                            margin-left: 60px;
+                                            width: 100%;
+                                            flex: 8;
+                                            @media screen and(max-width: 550px) {
+
+                                            }
+                                            
+                                            & h3 {
+                                                width: 30%;
+                                                font-size: 1.2rem;
+                                                line-height: 24px;
+                                                color: $ligthGray;
+                                            }
+                                        }
+                                        & span {
+                                            position: absolute;
+                                            right: 30px;
+                                            color: $red;
+                                            font-size: 1rem;
+                                            @media screen and(max-width: 550px) {
+                                                    right: 0px;
+                                                    font-size: 0.8rem;
+                                            }
+                                        }
+                                    }
+                                    & p {
+                                        line-height: 20px;
+                                        font-size: 1.2rem;
+                                    }
+                                    & .card-picture {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        margin: 15px auto;
+                                        width: 90%;
+                                        border-radius: 15px;
+                                        }
+                                    
+                                    & .button-container {
+                                        position: absolute;
+                                        display: flex;
+                                        top: 35px;
+                                        right: 30px;
+                                        @media screen and(max-width: 550px) {
+                                            right: 0px;
+                                            font-size: 1rem;
+                                    }
+                                            & button {
+                                                margin-right: 20px;
+                                            }
+                                            & .fa-edit, .fa-trash-alt {
+                                                cursor: pointer;
+                                                margin-left: 10px;
+                                            }
+                                    }
+                                    & .update-post {
+                                        width: 65%;
+                                        height: auto;
+                                        padding: 5px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        border-radius: 15px;
+                                            & .update-post-area {
+                                                resize: none;
+                                                padding: 10px;
+                                                width: 100%;
+                                                min-height: 70px;
+                                                border-radius: 15px;
+                                                border: none;
+                                                box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.33); 
+                                                font-size: 1.1rem;
+                                                &:focus {
+                                                    outline: none;
+                                                    font-weight: 500;
+                                                }
+                                            }
+                                            & .button-container {
+                                                position: absolute;
+                                                top: 80px;
+                                                right:10px;
+                                            }
+                                        & .btn {
+                                            padding: 5px 10px;
+                                            background-color: $red-3;
+                                            box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.33);
+                                            border: none;
+                                            cursor: pointer;
+                                            border-radius: 5px;
+                                            transition: .2s ease;
+                                            &:hover {
+                                                background-color: $red-2;
+                                            }
+                                        }
+                                    }
+                                    & .comments-container {
+                                        margin: 5px auto;
+                                        width: 90%;
+                                        border-radius: 10px;
+                                        & hr {
+                                            transform: translateY(-5px);
+                                            margin-top: 10px;
+                                            margin-bottom: 20px;
+                                        }
+                                        
+                                            & .comment-container {
+                                                box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.33);
+                                                border-radius: 10px;
+                                                margin-bottom: 5px;
+                                                position: relative;
+
+                                                & .left-part {
+                                                    position: absolute;
+                                                    & img {
+                                                        width: 30px;
+                                                        height: 30px;
+                                                        border-radius: 50%;
+                                                        margin-left: 5px;
+                                                        margin-top: 5px;
+                                                        object-fit: cover;
+                                                    }
+                                                }
+                                                
+                                                & .right-part {
+                                                    position: relative;
+                                                    margin-bottom: 30px;
+                                                    & .pseudo {
+                                                        padding-top: 10px;
+                                                         margin: 20px 10px 15px 30px;
+                                                        display: flex;
+                                                        justify-content: space-between;
+                                                            & h3 {
+                                                                font-size: 1rem;
+                                                                padding-left: 10px;
+                                                                color: $ligthGray;
+
+                                                            }
+                                                            & span {
+                                                                font-size: 0.8rem;
+                                                                padding-right: 5px;
+                                                                color: $red;
+                                                            }
+                                                    }
+                                                    & .edit-comment {
+                                                        display: flex;
+                                                        justify-content: flex-end;
+                                                        & span {
+                                                        padding-right: 10px;
+                                                        transform: translateY(-35px);
+                                                        & .fa-edit {
+                                                            cursor: pointer;
+                                                        }
+                                                        }
+                                                        & .edit-comment-form {
+                                                            width: 100%;
+                                                            display: flex;
+                                                            flex-direction: column;
+                                                            align-items: center;
+                                                            justify-content: center;
+                                                            padding-bottom: 15px;
+                                                                & label, input[type="submit"] {
+                                                                    font-size: 1rem;
+                                                                    border: none;
+                                                                    cursor: pointer;
+                                                                    padding: 3px 10px;
+                                                                    border-radius: 5px;
+                                                                    box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.33);
+                                                                    background-color: $red-4;
+                                                                    transition: .2s ease;
+                                                                        &:hover {
+                                                                            background-color: $red;
+                                                                            color: $white;
+                                                                        }
+                                                                }
+                                                                &  input[type="text"]{
+                                                                    width: 70%;
+                                                                    box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.33);
+                                                                    line-height: 1.8rem;
+                                                                    border: none; 
+                                                                    padding: 3px 10px;
+                                                                    font-size: 1rem;
+                                                                }
+                                                                & .edit-delete-comment-form {
+                                                                    & input[type="submit"]{
+                                                                        margin-right: 10px;
+                                                                    }
+                                                                    & .fa-trash-alt {
+                                                                        cursor: pointer;
+                                                                    }
+                                                                }
+                                                        }
+                                                    }
+                                                }
+                                                &.comment-container.client {
+                                                    background-color: $comment;
+                                                    font-weight: bold;
+                                                }
+                                                & p {
+                                                    padding-left: 5px;
+                                                    padding-bottom: 15px;
+                                                    font-size: 1.1rem;
+                                                }
+                                            }
+
+                                            & .comment-form {
+                                                display: flex;
+                                                flex-direction: column;
+                                                align-items: center;
+                                                    & input[type="text"] {
+                                                        width: 90%;
+                                                        min-height: 40px;
+                                                        border: none;
+                                                        border-radius: 10px;
+                                                        padding-left: 5px;
+                                                        box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.33);
+
+                                                        &:focus {
+                                                            outline: none;
+                                                        }
+                                                    }
+                                                    & input[type='submit'] {
+                                                        padding: 5px 10px;
+                                                        border-radius: 10px;
+                                                        border: none;
+                                                        background-color: $red-3;
+                                                        font-size: 14px;
+                                                        margin-bottom: 10px;
+                                                        transition: .2s ease;
+                                                        box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.161);
+
+                                                        &:hover {
+                                                            background-color: $red;
+                                                            outline: none;
+                                                            font-weight: 500;
+                                                            color: $white;
+                                                        }
+                                                    }
+                                            }
+                                    }
+                                    
+                            & .card-footer {
+                                display: flex;
+                                justify-content: space-around;
+                                & .comment-icon {
+                                    & i {
+                                    cursor: pointer;
+                                    margin-right: 5px;
+                                    font-size: 1.2rem;
+                                    }
+                                }
+                                & .like-container {
+
+                                    & .fa-thumbs-up {
+                                    font-size: 1.2rem;
+                                    cursor: pointer;
+                                    }
+                                    & .likeBlue {
+                                        color: $blue;
+                                    }
+                                    & span {
+                                        margin-left: 5px;
+                                        color: $ligthGray;
+                                        font-size: 1rem;
+                                    }
+                                }  
+                            }
+                        }
+                    }    
+                }
+            }
+        }
+    }
+
+
