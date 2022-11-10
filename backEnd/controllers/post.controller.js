@@ -22,11 +22,11 @@ module.exports.readPost = (req, res) => {
 module.exports.createPost = async (req, res) => {
     let filename;
     if (req.file !== null) {
-        filename = req.body.posterId + Date.now() + ".jpg";
+        filename = res.locals.user._id + Date.now() + ".jpg";
     }
 
     const newPost = new PostModel({
-        posterId: req.body.posterId,
+        posterId: res.locals.user._id,
         message: req.body.message,
         picture: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}` : '',
         likers: [],

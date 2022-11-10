@@ -16,7 +16,8 @@ const createToken = (id) => {
 
 // Function de création de compte
 module.exports.signUp = async (req, res) => {
-    const { pseudo, email, password } = req.body.values;
+    console.log(req.body)
+    const { pseudo, email, password } = req.body;
 
     try {
         const user = await UserModel.create({ pseudo, email, password });
@@ -28,7 +29,7 @@ module.exports.signUp = async (req, res) => {
 
 // Function d'identification a un compte
 module.exports.signIn = async (req, res) => {
-    const { email, password } = req.body.values;
+    const { email, password } = req.body;
 console.log('user avant try signIn')
     try {
         const user = await UserModel.login(email, password);

@@ -3,9 +3,7 @@ require('dotenv').config({ path: '../config/.env' });
 
 const UserModel = require('../models/user.model');
 
-
-// logique pour vérifier l'utilisateur
-exports.checkUser = (req, res, next) => {
+module.exports = (req, res, next) => {
     // récupère le token via cookie-parser
     const token = req.cookies.jwt;
     if (token) {
@@ -26,27 +24,6 @@ exports.checkUser = (req, res, next) => {
     } else {
         res.locals.user = null;
         console.log('no token')
-        next();
+        res.status(401).send({message: "Token invalid" });
     }
-};
-
-// on met en place la logique de connection pour le front
-exports.requireAuth = (req, res, next) => {
-    // on récupère le "token" via "cookie-parser"
-    const token = req.cookies.jwt;
-    if (token) {
-        jwt.verify(token, process.env.RANDOM_KEY_SECRET, async (error, decodedToken) => {
-            if (error) {
-                console.log('requireAuth error')
-                console.log(error);
-                res.send(200).json('Connection non autorisée : ' + error)
-            } else {
-                console.log('requireAuth checké')
-                console.log(decodedToken.id);
-                next();
-            }
-        });
-    } else {
-        console.log('Pas de token');
-    }
-};
+  };

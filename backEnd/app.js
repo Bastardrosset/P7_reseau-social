@@ -4,17 +4,17 @@ const cookieParser = require('cookie-parser');
 // Chemin vers les routes user et routes post
 const userRoutes = require('./routes/user.routes');
 const postRoutes = require('./routes/post.routes');
-
+const auth = require('./middelware/auth.middelware')
 require('dotenv').config({ path: './config/.env' });
 require('./config/db');
 
 const app = express();
 const path = require('path');
 const mongoSanitize = require("express-mongo-sanitize");
-
+const bodyParser = require("body-parser");
 
 // appelle au middleware de vérification utilisateur
-const { checkUser, requireAuth } = require('./middelware/auth.middelware');
+// const { checkUser, requireAuth } = require('./middelware/auth.middelware');
 
 
 // Headers & autorizations
@@ -47,19 +47,19 @@ app.use(
       replaceWith: "_",
   })
 );
+app.use(bodyParser.json());
 
 // autorisation utilisateur connecté ("jwt") avant toutes les routes
-app.get("*", checkUser);
+// app.get("*", checkUser);
 
 // route pour vérifier le token utilisateur lors de l'authentication coté front
-app.get('/jwtid', requireAuth, (req, res) => {
+app.get('/jwtid', auth, (req, res) => {
   res.status(200).send(res.locals.user._id);
   console.log("res user _id as", res.locals.user._id)
 });
 
 // gestionnaire de routage des images
 app.use('/images', express.static(path.join(__dirname, 'images')));
-
 
 // Routes
 app.use('/api/auth', userRoutes);
