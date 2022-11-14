@@ -39,7 +39,6 @@ const inputs = [
     axios({
       method: "post",
       url: `${process.env.REACT_APP_API_URL}api/auth/login`,
-      withCredentials: true,
       data: {
         values
       },
@@ -48,7 +47,10 @@ const inputs = [
       if (res.data.errors) {
         
       } else {
-        window.location = '/';
+        console.log('Data value', res.data)
+        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('user', JSON.stringify(res.data.user))
+        window.location.href = "/";
       }
     })
     .catch((err) => {

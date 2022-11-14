@@ -15,7 +15,7 @@ const CardComments = ({ post }) => {
         e.preventDefault();
 
         if (text) {
-            dispatch(addComment(post._id, userData._id, text, userData.pseudo, userData.isAdmin))
+            dispatch(addComment(post._id, text, userData.pseudo, userData.isAdmin))
             .then(() => dispatch(getPosts()))
             .then(() => setText(''))
         }

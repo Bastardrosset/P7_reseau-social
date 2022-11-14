@@ -5,7 +5,11 @@ const UserModel = require('../models/user.model');
 
 module.exports = (req, res, next) => {
     // récupère le token via cookie-parser
-    const token = req.cookies.jwt;
+    console.log('token :')
+    if (!req.headers.authorization) {
+        return res.status(401).send({message: "Token invalid" });
+    }
+    const token = req.headers.authorization.split(' ')[1]
     if (token) {
         jwt.verify(token, process.env.RANDOM_KEY_SECRET, async (error, decodedToken) => {
             if (error) {
@@ -24,6 +28,6 @@ module.exports = (req, res, next) => {
     } else {
         res.locals.user = null;
         console.log('no token')
-        res.status(401).send({message: "Token invalid" });
+        return res.status(401).send({message: "Token invalid" });
     }
   };

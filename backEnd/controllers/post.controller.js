@@ -1,3 +1,4 @@
+const { post } = require('../app');
 const PostModel = require('../models/post.model');
 const UserModel = require('../models/user.model');
 
@@ -8,7 +9,7 @@ const ObjectId = require('mongoose').Types.ObjectId; //ObjectId,type spécial ut
 module.exports.readPost = (req, res) => {
     PostModel.find((err, docs) => {
             if (!err) {
-                res.send(docs);
+                return res.send(docs);
             } else {
                 console.log('Erreur dans la data :' + err)
             }
@@ -50,6 +51,8 @@ module.exports.updatePost = (req, res) => {
     const updatedRecord = {
         message: req.body.message
     }
+    //TODO: vérifier que le posterId du post correspond au user du cookie (res.locals.user._id)
+
     PostModel.findByIdAndUpdate(
         req.params.id, {
             $set: updatedRecord
@@ -169,7 +172,7 @@ module.exports.commentPost = async (req, res) => {
                 req.params.id, {
                     $push: {
                         comments: {
-                            commenterId: req.body.commenterId,
+                            commenterId: res.locals.user._id,
                             commenterPseudo: req.body.commenterPseudo,
                             text: req.body.text,
                             timestamp: new Date().getTime(),

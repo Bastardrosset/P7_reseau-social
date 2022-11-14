@@ -12,22 +12,15 @@ const App = () => {
   // console.log('uid', uid)
 
   useEffect(() => {
-    const fetchToken = async () => {
-      await axios ({// Hook qui stock l'ID user
-        method: 'get',
-        url: `${process.env.REACT_APP_API_URL}jwtid`,
-        withCredentials: true,
-      })
-      .then((res) => {
-        setUid(res.data);
-      })
-      .catch((error) => console.log("No token"));
-    }
-    fetchToken();
+    let userFromLS = localStorage.getItem('user');
+    if (userFromLS) {
+      setUid(JSON.parse(userFromLS)._id);
       if (uid) {
-        console.log('uid', uid);
         dispatch(getUser(uid));
-      };
+      }
+    }
+    
+    
 
   }, [uid, dispatch]);//[] relance uid a chaque changement sur useEffect
 

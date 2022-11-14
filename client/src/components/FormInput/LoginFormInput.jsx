@@ -8,13 +8,7 @@ const LoginFormInput = (props) => {
     const usersEmail = useSelector((state) => state.usersReducer);
 
     const handleFocused = (e) => {
-        usersEmail.map((userEmail) => {
-          // if (userEmail.email !== e.target.value){
-          //   console.log("error")
-          // }  else {
-          //  return errorMessage
-          // }
-        })
+
     }
     
   return (

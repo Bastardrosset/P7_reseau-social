@@ -11,14 +11,8 @@ const Logout = () => {
     }
 
     const logout = async () => {
-        await axios({
-            method: "get",
-            url: `${process.env.REACT_APP_API_URL}api/auth/logout`,
-            withCredentials: true
-        })
-        .then(() => removeCookie('jwt'))// retire le cookie du front
-        .catch((error) => console.log(error));
-
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
         window.location = "/";// redirige vers home
     }
 
